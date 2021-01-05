@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>评论管理</title>
+    <meta name="viewport" content="width-wdith, initial-scale=1.0">
+    <title>添加/编辑评论</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css"/>
+    <script th:src="@{js/jquery-slim.min.js}" type="text/javascript"></script>
+    <script th:src="@{js/bootstrap.min.js}" type="text/javascript"></script>
+    <script th:src="@{/js/vue.min.js}" type="text/javascript"></script>
+    <script src="js/site.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <h5>评论管理</h5>
+    </div>
+    <div class="row" th:unless="${#strings.isEmpty(ok)}">
+        <p class="alert alert-success" th:text="${ok}"></p>
+    </div>
+    <div class="row">
+        <form class="form-group" th:action="@{/listcomments}" id="form1" method="post">
+            <div class="form-group">
+                <label>关键字</label>
+                <input type="text" placeholder="请输入关键字进行搜索" name="kw" th:value="${kw}">
+                <input type="submit" class="btn btn-primary" th:value="搜索">
+                <a th:href="@{/editcomment}" class="btn btn-primary">添加评论</a>
+                <button type="button" class="btn btn-danger delbtns">删除</button>
+            </div>
+        </form>
+        <!--        </div>-->
+        <!--        <div class="row">-->
+        <table class="table">
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>属于的博物馆</th>
+                <th>属于的用户</th>
+                <th>内容</th>
+                <th>评论的时间</th>
+                <th>环境打分</th>
+                <th>展览打分</th>
+                <th>服务打分</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="c : ${pages.content}">
+                <td>
+                    <input type="checkbox" th:value="${c.id}" class="ccid">
+                </td>
+                <td th:text="${c.mid}"></td>
+                <td th:text="${c.uid}"></td>
+                <td th:text="${c.content}"></td>
+                <td th:text="${c.time}"></td>
+                <td th:text="${c.environmentstar}"></td>
+                <td th:text="${c.exhibitionstar}"></td>
+                <td th:text="${c.servicestar}"></td>
+                <td>
+                    <a th:href="@{|/editcomment/${c.id}|}">编辑</a>
+                    <a th:href="@{|/deletecomment/${c.id}|}" class="delbtn">删除</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row" th:fragment="pager">
+        <nav><!--分页碎片需要的数据：1.查询数据用pages作为关键字，且是分页查询；2.当前网址必须是查询页面；3.条件查询如何实现？-->
+            <ul class="pagination">
+                <li class="page-item" th:each="p: ${#numbers.sequence(1,pages.totalPages)}">
+                    <a  href="javascript:void(0);" th:page="${p-1}" class="page-link pagelink"  th:text="${p}"> </a>
+                </li>
+                <!--                    th:href="'?page='+${p-1}+'&size=1'"-->
+            </ul>
+        </nav>
+    </div>
+</div>
+</body>
+</html></title>
+</head>
+<body>
+
+</body>
+</html>

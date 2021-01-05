@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>藏品管理</title>
+    <meta name="viewport" content="width-wdith, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css"/>
+    <script th:src="@{js/jquery-slim.min.js}" type="text/javascript"></script>
+    <script th:src="@{js/bootstrap.min.js}" type="text/javascript"></script>
+    <script th:src="@{/js/vue.min.js}" type="text/javascript"></script>
+    <script src="js/site.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <h5>藏品管理</h5>
+    </div>
+    <div class="row" th:unless="${#strings.isEmpty(ok)}">
+        <p class="alert alert-success" th:text="${ok}"></p>
+    </div>
+    <div class="row">
+        <form class="form-group" th:action="@{/listcollections}" id="form1" method="post">
+            <div class="form-group">
+                <label>关键字</label>
+                <input type="text" placeholder="请输入关键字进行搜索" name="kw" th:value="${kw}">
+                <input type="submit" class="btn btn-primary" th:value="搜索">
+                <a th:href="@{/edituser}" class="btn btn-primary">添加用户</a>
+                <input type="hidden" name="uids" value="" id="deleteuids">
+                <button type="button" class="btn btn-danger delbtns">删除</button>
+            </div>
+        </form>
+        <!--        </div>-->
+        <!--        <div class="row">-->
+        <table class="table">
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>账号</th>
+                <th>性别</th>
+                <th>姓名</th>
+                <th>手机</th>
+                <th>电子邮件</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="u : ${pages.content}">
+                <td>
+                    <input type="checkbox" th:value="${u.uid}" class="cuid">
+                    <span th:text="${uStat.count}"></span>
+                </td>
+                <td th:text="${u.account}"></td>
+                <td th:text="${u.grander}"></td>
+                <td th:text="${u.name}"></td>
+                <td th:text="${u.mobile}"></td>
+                <td th:text="${u.email}"></td>
+                <td>
+                    <a th:href="@{|/edituser/${u.uid}|}">编辑</a>
+                    <a th:href="@{|/deleteuser/${u.uid}|}" class="delbtn">删除</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
