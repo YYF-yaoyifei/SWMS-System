@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>教师管理</title>
+</head>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.bootcss.com/bootstrap-select/1.12.4/css/bootstrap-select.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap-select/1.12.4/js/i18n/defaults-zh_CN.min.js"></script>
+
+<body>
+    <div class="text-center">
+        <strong style="font-size:20px;">学生总览</strong>
+        <!-- <strong class="pull-right">总人数：xx</strong> -->
+    </div>
+    <table class="table table-hover table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>序号</th>
+                <th>学号</th>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>班级</th>
+                <th>密码</th>
+                <th>学院</th>
+                <th>修改</th>
+                <th style="width: 45px;">
+                    删除
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+
+            <tr>
+
+                <td>1</td>
+                <td>14201101</td>
+                <td>王嫣兰</td>
+                <td>女</td>
+                <td>142011</td>
+                <td>123456</td>
+                <td>软件学院</td>
+                <td><a href="http://www.csbishe.cn:15083/ssh_hw_manage/manager/updateStudent_jsp?id=1"
+                        onclick="setbreadcrumb()">修改</a></td>
+                <td>
+                    <a type="button" class="close" href="javascript:del(&#39;1&#39;)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                        <span class="sr-only">关闭</span>
+                    </a>
+                </td>
+            </tr>
+
+
+            <tr>
+
+                <td>2</td>
+                <td>14201102</td>
+                <td>赵雯楚</td>
+                <td>女</td>
+                <td>142011</td>
+                <td>cccccc</td>
+                <td>软件学院</td>
+                <td><a href="http://www.csbishe.cn:15083/ssh_hw_manage/manager/updateStudent_jsp?id=2"
+                        onclick="setbreadcrumb()">修改</a></td>
+                <td>
+                    <a type="button" class="close" href="javascript:del(&#39;2&#39;)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                        <span class="sr-only">关闭</span>
+                    </a>
+                </td>
+            </tr>
+
+
+            <tr>
+
+                <td>3</td>
+                <td>14201103</td>
+                <td>李嘉丽</td>
+                <td>女</td>
+                <td>142011</td>
+                <td>cccccc</td>
+                <td>软件学院</td>
+                <td><a href="http://www.csbishe.cn:15083/ssh_hw_manage/manager/updateStudent_jsp?id=3"
+                        onclick="setbreadcrumb()">修改</a></td>
+                <td>
+                    <a type="button" class="close" href="javascript:del(&#39;3&#39;)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                        <span class="sr-only">关闭</span>
+                    </a>
+                </td>
+            </tr>
+
+
+            <tr>
+
+                <td>4</td>
+                <td>14201104</td>
+                <td>廖美欢</td>
+                <td>女</td>
+                <td>142011</td>
+                <td>cccccc</td>
+                <td>软件学院</td>
+                <td><a href="http://www.csbishe.cn:15083/ssh_hw_manage/manager/updateStudent_jsp?id=4"
+                        onclick="setbreadcrumb()">修改</a></td>
+                <td>
+                    <a type="button" class="close" href="javascript:del(&#39;4&#39;)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                        <span class="sr-only">关闭</span>
+                    </a>
+                </td>
+            </tr>
+
+
+            <tr>
+
+                <td>5</td>
+                <td>14201105</td>
+                <td>卢超素</td>
+                <td>女</td>
+                <td>142011</td>
+                <td>cccccc</td>
+                <td>软件学院</td>
+                <td><a href="http://www.csbishe.cn:15083/ssh_hw_manage/manager/updateStudent_jsp?id=5"
+                        onclick="setbreadcrumb()">修改</a></td>
+                <td>
+                    <a type="button" class="close" href="javascript:del(&#39;5&#39;)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                        <span class="sr-only">关闭</span>
+                    </a>
+                </td>
+            </tr>
+
+
+            <tr>
+
+                <td>6</td>
+                <td>14201106</td>
+                <td>张琦</td>
+                <td>男</td>
+                <td>142011</td>
+                <td>cccccc</td>
+                <td>软件学院</td>
+                <td><a href="http://www.csbishe.cn:15083/ssh_hw_manage/manager/updateStudent_jsp?id=6"
+                        onclick="setbreadcrumb()">修改</a></td>
+                <td>
+                    <a type="button" class="close" href="javascript:del(&#39;6&#39;)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                        <span class="sr-only">关闭</span>
+                    </a>
+                </td>
+            </tr>
+
+
+            <tr>
+
+                <td>7</td>
+                <td>14201107</td>
+                <td>何昶源</td>
+                <td>男</td>
+                <td>142011</td>
+                <td>cccccc</td>
+                <td>软件学院</td>
+                <td><a href="http://www.csbishe.cn:15083/ssh_hw_manage/manager/updateStudent_jsp?id=7"
+                        onclick="setbreadcrumb()">修改</a></td>
+                <td>
+                    <a type="button" class="close" href="javascript:del(&#39;7&#39;)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                        <span class="sr-only">关闭</span>
+                    </a>
+                </td>
+            </tr>
+
+
+            <tr>
+
+                <td>8</td>
+                <td>14201108</td>
+                <td>王启宁</td>
+                <td>男</td>
+                <td>142011</td>
+                <td>cccccc</td>
+                <td>软件学院</td>
+                <td><a href="http://www.csbishe.cn:15083/ssh_hw_manage/manager/updateStudent_jsp?id=8"
+                        onclick="setbreadcrumb()">修改</a></td>
+                <td>
+                    <a type="button" class="close" href="javascript:del(&#39;8&#39;)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                        <span class="sr-only">关闭</span>
+                    </a>
+                </td>
+            </tr>
+
+
+            <tr>
+
+                <td>9</td>
+                <td>14201109</td>
+                <td>任孟凯</td>
+                <td>男</td>
+                <td>142011</td>
+                <td>cccccc</td>
+                <td>软件学院</td>
+                <td><a href="http://www.csbishe.cn:15083/ssh_hw_manage/manager/updateStudent_jsp?id=9"
+                        onclick="setbreadcrumb()">修改</a></td>
+                <td>
+                    <a type="button" class="close" href="javascript:del(&#39;9&#39;)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                        <span class="sr-only">关闭</span>
+                    </a>
+                </td>
+            </tr>
+
+
+            <tr>
+
+                <td>10</td>
+                <td>14201110</td>
+                <td>孙明峰</td>
+                <td>男</td>
+                <td>142011</td>
+                <td>cccccc</td>
+                <td>软件学院</td>
+                <td><a href="http://www.csbishe.cn:15083/ssh_hw_manage/manager/updateStudent_jsp?id=10"
+                        onclick="setbreadcrumb()">修改</a></td>
+                <td>
+                    <a type="button" class="close" href="javascript:del(&#39;10&#39;)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                        <span class="sr-only">关闭</span>
+                    </a>
+                </td>
+            </tr>
+
+
+            <tr>
+
+                <td>11</td>
+                <td>14201111</td>
+                <td>崔平平</td>
+                <td>男</td>
+                <td>142011</td>
+                <td>cccccc</td>
+                <td>软件学院</td>
+                <td><a href="http://www.csbishe.cn:15083/ssh_hw_manage/manager/updateStudent_jsp?id=11"
+                        onclick="setbreadcrumb()">修改</a></td>
+                <td>
+                    <a type="button" class="close" href="javascript:del(&#39;11&#39;)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                        <span class="sr-only">关闭</span>
+                    </a>
+                </td>
+            </tr>
+
+
+            <tr>
+
+                <td>12</td>
+                <td>14201112</td>
+                <td>高晨阳</td>
+                <td>男</td>
+                <td>142011</td>
+                <td>cccccc</td>
+                <td>软件学院</td>
+                <td><a href="http://www.csbishe.cn:15083/ssh_hw_manage/manager/updateStudent_jsp?id=12"
+                        onclick="setbreadcrumb()">修改</a></td>
+                <td>
+                    <a type="button" class="close" href="javascript:del(&#39;12&#39;)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                        <span class="sr-only">关闭</span>
+                    </a>
+                </td>
+            </tr>
+
+
+            <tr>
+
+                <td>13</td>
+                <td>14201113</td>
+                <td>胡烨</td>
+                <td>男</td>
+                <td>142011</td>
+                <td>cccccc</td>
+                <td>软件学院</td>
+                <td><a href="http://www.csbishe.cn:15083/ssh_hw_manage/manager/updateStudent_jsp?id=13"
+                        onclick="setbreadcrumb()">修改</a></td>
+                <td>
+                    <a type="button" class="close" href="javascript:del(&#39;13&#39;)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                        <span class="sr-only">关闭</span>
+                    </a>
+                </td>
+            </tr>
+
+
+            <tr>
+
+                <td>14</td>
+                <td>14201114</td>
+                <td>黄帅英</td>
+                <td>男</td>
+                <td>142011</td>
+                <td>cccccc</td>
+                <td>软件学院</td>
+                <td><a href="http://www.csbishe.cn:15083/ssh_hw_manage/manager/updateStudent_jsp?id=14"
+                        onclick="setbreadcrumb()">修改</a></td>
+                <td>
+                    <a type="button" class="close" href="javascript:del(&#39;14&#39;)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                        <span class="sr-only">关闭</span>
+                    </a>
+                </td>
+            </tr>
+
+
+            <tr>
+
+                <td>15</td>
+                <td>14201115</td>
+                <td>廖亮</td>
+                <td>男</td>
+                <td>142011</td>
+                <td>cccccc</td>
+                <td>软件学院</td>
+                <td><a href="http://www.csbishe.cn:15083/ssh_hw_manage/manager/updateStudent_jsp?id=15"
+                        onclick="setbreadcrumb()">修改</a></td>
+                <td>
+                    <a type="button" class="close" href="javascript:del(&#39;15&#39;)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                        <span class="sr-only">关闭</span>
+                    </a>
+                </td>
+            </tr>
+
+
+            <tr>
+
+                <td>16</td>
+                <td>14201201</td>
+                <td>陆亦可</td>
+                <td>女</td>
+                <td>142012</td>
+                <td>cccccc</td>
+                <td>软件学院</td>
+                <td><a href="http://www.csbishe.cn:15083/ssh_hw_manage/manager/updateStudent_jsp?id=16"
+                        onclick="setbreadcrumb()">修改</a></td>
+                <td>
+                    <a type="button" class="close" href="javascript:del(&#39;16&#39;)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                        <span class="sr-only">关闭</span>
+                    </a>
+                </td>
+            </tr>
+
+
+            <tr>
+
+                <td>17</td>
+                <td>14201202</td>
+                <td>侯亮平</td>
+                <td>男</td>
+                <td>142012</td>
+                <td>cccccc</td>
+                <td>软件学院</td>
+                <td><a href="http://www.csbishe.cn:15083/ssh_hw_manage/manager/updateStudent_jsp?id=17"
+                        onclick="setbreadcrumb()">修改</a></td>
+                <td>
+                    <a type="button" class="close" href="javascript:del(&#39;17&#39;)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                        <span class="sr-only">关闭</span>
+                    </a>
+                </td>
+            </tr>
+
+
+            <tr>
+
+                <td>18</td>
+                <td>14201203</td>
+                <td>沙瑞金</td>
+                <td>男</td>
+                <td>142012</td>
+                <td>cccccc</td>
+                <td>软件学院</td>
+                <td><a href="http://www.csbishe.cn:15083/ssh_hw_manage/manager/updateStudent_jsp?id=18"
+                        onclick="setbreadcrumb()">修改</a></td>
+                <td>
+                    <a type="button" class="close" href="javascript:del(&#39;18&#39;)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                        <span class="sr-only">关闭</span>
+                    </a>
+                </td>
+            </tr>
+
+
+            <tr>
+
+                <td>19</td>
+                <td>14201301</td>
+                <td>高小琴</td>
+                <td>女</td>
+                <td>142013</td>
+                <td>cccccc</td>
+                <td>软件学院</td>
+                <td><a href="http://www.csbishe.cn:15083/ssh_hw_manage/manager/updateStudent_jsp?id=19"
+                        onclick="setbreadcrumb()">修改</a></td>
+                <td>
+                    <a type="button" class="close" href="javascript:del(&#39;19&#39;)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                        <span class="sr-only">关闭</span>
+                    </a>
+                </td>
+            </tr>
+
+
+            <tr>
+
+                <td>20</td>
+                <td>14201302</td>
+                <td>李达康</td>
+                <td>男</td>
+                <td>142013</td>
+                <td>cccccc</td>
+                <td>软件学院</td>
+                <td><a href="http://www.csbishe.cn:15083/ssh_hw_manage/manager/updateStudent_jsp?id=20"
+                        onclick="setbreadcrumb()">修改</a></td>
+                <td>
+                    <a type="button" class="close" href="javascript:del(&#39;20&#39;)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                        <span class="sr-only">关闭</span>
+                    </a>
+                </td>
+            </tr>
+
+
+            <tr>
+
+                <td>21</td>
+                <td>14201303</td>
+                <td>易学习</td>
+                <td>男</td>
+                <td>142013</td>
+                <td>cccccc</td>
+                <td>软件学院</td>
+                <td><a href="http://www.csbishe.cn:15083/ssh_hw_manage/manager/updateStudent_jsp?id=21"
+                        onclick="setbreadcrumb()">修改</a></td>
+                <td>
+                    <a type="button" class="close" href="javascript:del(&#39;21&#39;)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                        <span class="sr-only">关闭</span>
+                    </a>
+                </td>
+            </tr>
+
+
+        </tbody>
+    </table>
+
+</body>
