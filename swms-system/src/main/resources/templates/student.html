@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>学生界面</title>
+</head>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.bootcss.com/bootstrap-select/1.12.4/css/bootstrap-select.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap-select/1.12.4/js/i18n/defaults-zh_CN.min.js"></script>
+
+<script>
+    $(function () {
+        $(".dropdown-menu a").on("click", function () {
+            var address = $(this).attr("data_src");
+            $("iframe").attr("src", address);
+        });
+    });
+
+    var ifm = document.getElementById("myiframe");
+    ifm.height = document.documentElement.clientHeight;
+</script>
+
+<body>
+    <div class="container-fluid"
+        style="margin-left:100px;margin-right:100px; padding-top: 0;">
+
+        <div class="page-header" style="margin-top: 0;height: 42px">
+            <h1 class="text-center"><strong>作业管理系统</strong></h1>
+        </div>
+
+        <!-- 菜单栏 -->
+        <nav class="navbar navbar-default" role="navigation">
+            <!-- style="background:yellow; -->
+            <div class="container-fluid">
+
+                <div class="navbar-header">
+                    <a class="navbar-brand" href=""><span class="glyphicon glyphicon-pencil"
+                            style="font-size: 25px;"></span></a>
+                </div>
+
+                <div>
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown"
+                                href="http://www.csbishe.cn:15083/ssh_hw_manage/login?account=admin&amp;password=admin&amp;type=Manager#"
+                                aria-expanded="false">
+                                上传作业
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown"
+                                href="http://www.csbishe.cn:15083/ssh_hw_manage/login?account=admin&amp;password=admin&amp;type=Manager#"
+                                aria-expanded="false">
+                                查看批阅
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <!-- <a href="#"><span class="glyphicon glyphicon-envelope" style="font-size: 20px;"></a> -->
+                        <img src="./管理员界面_files/header.gif" class="img-circle" style="width: 40px;height: 40px;">
+                    </li>
+                    <li><strong><span style="line-height:55px;">教师:&nbsp;admin</span></strong></li>
+                    <li class="dropdown">
+                        <a href="http://www.csbishe.cn:15083/ssh_hw_manage/login?account=admin&amp;password=admin&amp;type=Manager#"
+                            class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <span class="glyphicon glyphicon-user" style="font-size: 20px;"></span>
+                            <strong class="caret"></strong>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a
+                                    href="http://www.csbishe.cn:15083/ssh_hw_manage/login?account=admin&amp;password=admin&amp;type=Manager#">教师:&nbsp;admin
+                                </a></li>
+                            <li><a href="http://www.csbishe.cn:15083/ssh_hw_manage/login?account=admin&amp;password=admin&amp;type=Manager#"
+                                    class="m_personalseting">个人设置</a></li>
+                            <li class="divider"></li>
+                            <li><a href="http://www.csbishe.cn:15083/ssh_hw_manage/logout"><span
+                                        class="glyphicon glyphicon-off"></span>注 销</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+
+        <ol class="breadcrumb">
+            <li><a href="javascript:void(0)">主页</a></li>
+        </ol>
+
+
+        <hr>
+        <!-- 右侧内容 -->
+        <div class="main" id="myiframe">
+            <iframe onload='this.style.height=Math.max(this.contentWindow.document.body.scrollHeight,this.contentWindow.document.documentElement.scrollHeight,200)+"px";'  frameborder="0" style="width:100%;height:100%" src="m_studentmanage" id="aa"></iframe>
+        </div>
+
+    </div>
+
+</body>

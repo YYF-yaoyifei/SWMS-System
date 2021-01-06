@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.text.DateFormat;
 import java.util.Date;
 
-@Controller
+/*@Controller
 public class HelloController {
  
     @RequestMapping("/hello")
@@ -16,8 +16,20 @@ public class HelloController {
 
         return "hello";
     }
-    
 
-    
-    
-}
+    @RequestMapping("/admin")
+    public String admin(Model m) throws Exception {
+        m.addAttribute("now", DateFormat.getDateTimeInstance().format(new Date()));
+
+        return "login";
+    }
+
+    @RequestMapping("/m_studentmanage")
+    public String m_studentmangage(Model m) throws Exception {
+        m.addAttribute("now", DateFormat.getDateTimeInstance().format(new Date()));
+
+        return "m_studentmanage";
+    }
+
+
+}*/

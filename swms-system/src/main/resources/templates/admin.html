@@ -1,0 +1,174 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>管理员界面</title>
+</head>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.bootcss.com/bootstrap-select/1.12.4/css/bootstrap-select.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap-select/1.12.4/js/i18n/defaults-zh_CN.min.js"></script>
+
+<script>
+    $(function () {
+        $(".dropdown-menu a").on("click", function () {
+            var address = $(this).attr("data_src");
+            $("iframe").attr("src", address);
+        });
+    });
+
+    var ifm = document.getElementById("myiframe");
+    ifm.height = document.documentElement.clientHeight;
+</script>
+
+<body>
+    <div class="container-fluid"
+        style="margin-left:100px;margin-right:100px; padding-top: 0;">
+
+        <div class="page-header" style="margin-top: 0;height: 42px;">
+            <h1 class="text-center"><strong>作业管理系统</strong></h1>
+        </div>
+
+        <!-- 菜单栏 -->
+        <nav class="navbar navbar-default" role="navigation">
+            <!-- style="background:yellow; -->
+            <div class="container-fluid">
+
+                <div class="navbar-header">
+                    <a class="navbar-brand" href=""><span class="glyphicon glyphicon-pencil"
+                            style="font-size: 25px;"></span></a>
+                </div>
+
+                <div>
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="">
+                                教师管理<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="" class="allT">总览</a></li>
+                                <li data_src=""></li>
+                                <li><a data_src="m_addteacher" class="allT">添 加</a></li>
+                                <li><a data_src="m_teachermanage" class="allT">删 除</a></li>
+                                <li><a data_src="m_teachermanage" class="allT">修 改</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="" aria-expanded="false">
+                                班级管理<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="" class="allS">总 览</a></li>
+                                <li class="divider"></li>
+                                <li><a data_src="m_addstudent" class="addS">添 加</a></li>
+                                <li><a data_src="m_studentmanage" class="allS">删 除</a></li>
+                                <li><a data_src="m_studentmanage" class="allS">修 改</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown"
+                                href="http://www.csbishe.cn:15083/ssh_hw_manage/login?account=admin&amp;password=admin&amp;type=Manager#"
+                                aria-expanded="false">
+                                课程管理<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a data_src="m_add">
+                                        class="allC">总 览</a></li>
+                                <li class="divider"></li>
+                                <li><a data_src="m_addcourse">
+                                        class="addC">添 加</a></li>
+                                <li><a data_src="m_coursemanage">
+                                        class="allC">删 除</a></li>
+                                <li><a data_src="m_coursemanage">
+                                        class="allC">修 改</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown"
+                                href="http://www.csbishe.cn:15083/ssh_hw_manage/login?account=admin&amp;password=admin&amp;type=Manager#">
+                                学生管理<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="http://www.csbishe.cn:15083/ssh_hw_manage/login?account=admin&amp;password=admin&amp;type=Manager#"
+                                        class="allT">总 览</a></li>
+                                <li class="divider"></li>
+                                <li><a href="http://www.csbishe.cn:15083/ssh_hw_manage/login?account=admin&amp;password=admin&amp;type=Manager#"
+                                        class="addT">添 加</a></li>
+                                <li><a href="http://www.csbishe.cn:15083/ssh_hw_manage/login?account=admin&amp;password=admin&amp;type=Manager#"
+                                        class="allT">删 除</a></li>
+                                <li><a href="http://www.csbishe.cn:15083/ssh_hw_manage/login?account=admin&amp;password=admin&amp;type=Manager#"
+                                        class="allT">修 改</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown"
+                                href="http://www.csbishe.cn:15083/ssh_hw_manage/login?account=admin&amp;password=admin&amp;type=Manager#">
+                                专业管理<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="http://www.csbishe.cn:15083/ssh_hw_manage/login?account=admin&amp;password=admin&amp;type=Manager#"
+                                        class="allT">总 览</a></li>
+                                <li class="divider"></li>
+                                <li><a href="http://www.csbishe.cn:15083/ssh_hw_manage/login?account=admin&amp;password=admin&amp;type=Manager#"
+                                        class="addT">添 加</a></li>
+                                <li><a href="http://www.csbishe.cn:15083/ssh_hw_manage/login?account=admin&amp;password=admin&amp;type=Manager#"
+                                        class="allT">删 除</a></li>
+                                <li><a href="http://www.csbishe.cn:15083/ssh_hw_manage/login?account=admin&amp;password=admin&amp;type=Manager#"
+                                        class="allT">修 改</a></li>
+                            </ul>
+                        </li>
+
+
+
+                    </ul>
+                </div>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <!-- <a href="#"><span class="glyphicon glyphicon-envelope" style="font-size: 20px;"></a> -->
+                        <img src="./管理员界面_files/header.gif" class="img-circle" style="width: 40px;height: 40px;">
+                    </li>
+                    <li><strong><span style="line-height:55px;">管理员:&nbsp;admin</span></strong></li>
+                    <li class="dropdown">
+                        <a href="http://www.csbishe.cn:15083/ssh_hw_manage/login?account=admin&amp;password=admin&amp;type=Manager#"
+                            class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <span class="glyphicon glyphicon-user" style="font-size: 20px;"></span>
+                            <strong class="caret"></strong>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a
+                                    href="http://www.csbishe.cn:15083/ssh_hw_manage/login?account=admin&amp;password=admin&amp;type=Manager#">管理员:&nbsp;admin
+                                </a></li>
+                            <li><a href="http://www.csbishe.cn:15083/ssh_hw_manage/login?account=admin&amp;password=admin&amp;type=Manager#"
+                                    class="m_personalseting">个人设置</a></li>
+                            <li class="divider"></li>
+                            <li><a href="http://www.csbishe.cn:15083/ssh_hw_manage/logout"><span
+                                        class="glyphicon glyphicon-off"></span>注 销</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+
+        <ol class="breadcrumb">
+            <li><a href="javascript:void(0)">主页</a></li>
+        </ol>
+
+        <hr>
+
+        <!-- 右侧内容 -->
+        <div class="main" id="myiframe">
+            <iframe onload='this.style.height=Math.max(this.contentWindow.document.body.scrollHeight,this.contentWindow.document.documentElement.scrollHeight,200)+"px";'  frameborder="0" style="width:100%;height:100%" src="m_studentmanage" id="aa"></iframe>
+        </div>
+
+    </div>
+
+</body>
