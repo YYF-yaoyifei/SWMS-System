@@ -1,0 +1,73 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>教师管理</title>
+</head>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.bootcss.com/bootstrap-select/1.12.4/css/bootstrap-select.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap-select/1.12.4/js/i18n/defaults-zh_CN.min.js"></script>
+
+<style type="text/css">* {
+ text-shadow: transparent 0px 0px 0px, rgba(0,0,0,0.68) 0px 0px 0px !important; 
+}</style></head>
+<body>
+	<div class="container">
+		<div class="row clearfix">
+			<div class="col-md-12 column">
+				<form class="form-horizontal" action="editandsaveteacher" method="get" role="form">
+					<div class="form-group">
+						<label for="inputEmail3" class="col-sm-2 control-label">账号:</label>
+						<div class="col-sm-2">
+							<input type="text" class="form-control" id="inputid" name = "id"
+								   th:value="${teacher.id}">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="inputEmail3" class="col-sm-2 control-label">姓名:</label>
+						<div class="col-sm-2">
+							<input type="text" class="form-control" id="inputname" name = "name"
+								   th:value="${teacher.name}">
+						</div>
+					</div>
+					<div class="form-group">
+						 <label for="inputEmail3" class="col-sm-2 control-label">性别:</label>
+						<div class="col-sm-2">
+							<input type="text" name="t_sex" class="form-control" id="inputgender" th:value = "${teacher.gender.name()}">
+						</div>
+					</div>
+					<div class="form-group">
+						 <label for="inputEmail3" class="col-sm-2 control-label">系部:</label>
+						<div class="col-sm-2">
+							<input type="text" name="t_dept" class="form-control" id="inputEmail3" th:value = "${teacher.department.name}" disabled>
+						</div>
+					</div>
+					<div class="form-group">
+						 <label for="inputEmail3" class="col-sm-2 control-label">密码:</label>
+						<div class="col-sm-2">
+							<input type="text" class="form-control" id="inputpassword" name = "password" th:value = "${teacher.password}">
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							 <button type="submit" class="btn btn-default">修改</button>&nbsp;&nbsp;&nbsp;
+							 <button type="reset" class="btn btn-default">重置</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+<!-- JavaScript 放置在文档最后面可以使页面加载速度更快 -->
+    <!-- 可选: 包含 jQuery 库 -->
+    <script src="./教师管理-修改_files/jquery-3.1.1.js.下载"></script>
+    <!-- 可选: 合并了 Bootstrap JavaScript 插件 -->
+    <script src="./教师管理-修改_files/bootstrap.min.js.下载"></script>
+
+<remove-web-limits-iqxin id="rwl-iqxin" class="rwl-exempt" style="position: fixed; top: 0px; left: 0px;"><qxinbutton type="qxinbutton" id="rwl-setbtn"> set </qxinbutton> <lalala style="cursor:move; font-size:12px;">限制解除</lalala> <input type="checkbox" name="" id="black_node"><style type="text/css">#rwl-iqxin{position:fixed;transform:translate(-95px,0);width:85px;height:25px;font-size:12px;font-weight: 500;font-family:Verdana, Arial, '宋体';color:#fff;background:#333;z-index:2147483647;margin: 0;opacity:0.05;transition:0.3s;overflow:hidden;user-select:none;text-align:center;white-space:nowrap;line-height:25px;padding:0 16px;border:1px solid #ccc;border-width:1px 1px 1px 0;border-bottom-right-radius:5px;box-sizing: content-box;}#rwl-iqxin input{margin: 0;padding: 0;vertical-align:middle;-webkit-appearance:checkbox;-moz-appearance:checkbox;position: static;clip: auto;opacity: 1;cursor: pointer;}#rwl-iqxin.rwl-active-iqxin{left: 0px;transform:translate(0,0);opacity: 0.9;height: 32px;line-height: 32px}#rwl-iqxin label{margin:0;padding:0;font-weight:500;}#rwl-iqxin #rwl-setbtn{margin: 0 4px 0 0;padding: 0 0 0 4px;border: none;border-radius: 2px;cursor: pointer;background: #fff;color: #000;} </style></remove-web-limits-iqxin></body></html>

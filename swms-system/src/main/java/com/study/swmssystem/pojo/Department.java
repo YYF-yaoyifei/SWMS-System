@@ -1,6 +1,7 @@
 package com.study.swmssystem.pojo;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "department")
@@ -12,6 +13,9 @@ public class Department {
 
     @Column(name = "name")
     String name;
+    
+    @OneToMany(mappedBy = "department",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<Teacher> teacherList;
 
     public int getId() {
         return id;
@@ -27,5 +31,13 @@ public class Department {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Teacher> getTeacherList() {
+        return teacherList;
+    }
+
+    public void setTeacherList(List<Teacher> teacherList) {
+        this.teacherList = teacherList;
     }
 }

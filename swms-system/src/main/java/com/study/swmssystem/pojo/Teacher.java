@@ -24,14 +24,14 @@ public class Teacher {
     @Column(name = "email")
     private String email;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinTable(name = "teacher_department",joinColumns = @JoinColumn(name = "teacher_id"),
-                inverseJoinColumns = @JoinColumn(name = "department_id"))
+    @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.REFRESH},optional = false)
+    @JoinColumn(name = "department_id")
     private Department department;
 
     @Column
-    @Enumerated(EnumType.STRING)
-    Gender gender;
+    @Enumerated(EnumType.ORDINAL)
+    Gender gender = Gender.male;
+
 
     public Gender getGender() {
         return gender;

@@ -25,20 +25,19 @@
                 <th>系部</th>
                 <th>密码</th>
                 <th>修改</th>
-                <th style="width: 45px;">删除</th>
+                <th style="width: 50px;">删除</th>
             </tr>
         </thead>
         <tbody>
 
         <tr th:each="teacher: ${teachers}">
-            <td th:text = "1"></td>
+            <td th:text ="${index+1}"></td>
             <td th:text="${teacher.getId()}"></td>
             <td th:text="${teacher.getName()}"></td>
-            <td th:text="${teacher.getGender()}"></td>
+            <td th:text="${teacher.gender.getName()}"></td>
             <td th:text="${teacher.getDepartment().getName()}"></td>
             <td th:text="${teacher.getPassword()}"></td>
-            <td><a href="http://www.csbishe.cn:15083/ssh_hw_manage/manager/updateTeacher_jsp?id=1"
-                   onclick="setbreadcrumb()">修改</a></td>
+            <td><a th:href="@{editteacher(id=${teacher.id})}">修改</a></td>
             <td>
                 <a type="button" class="close" href="private function del(s) {
 
@@ -50,141 +49,6 @@
             </td>
 
         </tr>
-
-
-        <tr>
-
-            <td>1</td>
-            <td>140001</td>
-            <td>舒坚</td>
-            <td>男</td>
-            <td>软件学院</td>
-            <td>123456</td>
-            <td><a href="http://www.csbishe.cn:15083/ssh_hw_manage/manager/updateTeacher_jsp?id=1"
-                   onclick="setbreadcrumb()">修改</a></td>
-            <td>
-                <a type="button" class="close" href="private function del(s) {
-
-                }
-                javascript:del(&#39;1&#39;)">
-                    <span class="glyphicon glyphicon-trash"></span>
-                    <span class="sr-only">关闭</span>
-                </a>
-            </td>
-
-            <td>2</td>
-            <td>140002</td>
-            <td>严赢富</td>
-            <td>男</td>
-            <td>软件学院</td>
-            <td>bbbbbb</td>
-            <td><a href="http://www.csbishe.cn:15083/ssh_hw_manage/manager/updateTeacher_jsp?id=2"
-                   onclick="setbreadcrumb()">修改</a></td>
-            <td>
-                <a type="button" class="close" href="private function del(s) {
-
-                }
-                javascript:del(&#39;2&#39;)">
-                    <span class="glyphicon glyphicon-trash"></span>
-                    <span class="sr-only">关闭</span>
-                </a>
-            </td>
-        </tr>
-
-
-        <tr>
-
-                <td>3</td>
-                <td>140003</td>
-                <td>罗海平</td>
-                <td>男</td>
-                <td>软件学院</td>
-                <td>bbbbbb</td>
-                <td><a href="http://www.csbishe.cn:15083/ssh_hw_manage/manager/updateTeacher_jsp?id=3"
-                        onclick="setbreadcrumb()">修改</a></td>
-                <td>
-                    <a type="button" class="close" href="private function del(s) {
-
-                    }
-                    javascript:del(&#39;3&#39;)">
-                        <span class="glyphicon glyphicon-trash"></span>
-                        <span class="sr-only">关闭</span>
-                    </a>
-                </td>
-            </tr>
-
-
-
-
-            <tr>
-                <td>4</td>
-                <td>140004</td>
-                <td>梁旗军</td>
-                <td>男</td>
-                <td>软件学院</td>
-                <td>bbbbbb</td>
-                <td><a href="http://www.csbishe.cn:15083/ssh_hw_manage/manager/updateTeacher_jsp?id=4"
-                        onclick="setbreadcrumb()">修改</a></td>
-                <td>
-                    <a type="button" class="close" href="private function del(s) {
-
-                    }
-                    javascript:del(&#39;4&#39;)">
-                        <span class="glyphicon glyphicon-trash"></span>
-                        <span class="sr-only">关闭</span>
-                    </a>
-                </td>
-            </tr>
-
-
-
-
-            <tr>
-
-                <td>5</td>
-                <td>140005</td>
-                <td>苏曦</td>
-                <td>男</td>
-                <td>软件学院</td>
-                <td>bbbbbb</td>
-                <td><a href="http://www.csbishe.cn:15083/ssh_hw_manage/manager/updateTeacher_jsp?id=5"
-                        onclick="setbreadcrumb()">修改</a></td>
-                <td>
-                    <a type="button" class="close" href="private function del(s) {
-
-                    }
-                    javascript:del(&#39;5&#39;)">
-                        <span class="glyphicon glyphicon-trash"></span>
-                        <span class="sr-only">关闭</span>
-                    </a>
-                </td>
-            </tr>
-
-
-
-
-            <tr>
-                <td>6</td>
-                <td>140006</td>
-                <td>刘琳岚</td>
-                <td>女</td>
-                <td>信工学院</td>
-                <td>bbbbbb</td>
-                <td><a href="http://www.csbishe.cn:15083/ssh_hw_manage/manager/updateTeacher_jsp?id=6"
-                        onclick="setbreadcrumb()">修改</a></td>
-                <td>
-                    <a type="button" class="close" href="private function del(s) {
-
-                    }
-                    javascript:del(&#39;6&#39;)">
-                        <span class="glyphicon glyphicon-trash"></span>
-                        <span class="sr-only">关闭</span>
-                    </a>
-                </td>
-            </tr>
-
-
-
         </tbody>
     </table>
 
