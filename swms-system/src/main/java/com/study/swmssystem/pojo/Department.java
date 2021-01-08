@@ -17,6 +17,9 @@ public class Department {
     @OneToMany(mappedBy = "department",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Teacher> teacherList;
 
+    @OneToMany(mappedBy = "department",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<Student> studetnList;
+
     public int getId() {
         return id;
     }
@@ -35,6 +38,14 @@ public class Department {
 
     public List<Teacher> getTeacherList() {
         return teacherList;
+    }
+
+    public List<Student> getStudetnList() {
+        return studetnList;
+    }
+
+    public void setStudetnList(List<Student> studetnList) {
+        this.studetnList = studetnList;
     }
 
     public void setTeacherList(List<Teacher> teacherList) {

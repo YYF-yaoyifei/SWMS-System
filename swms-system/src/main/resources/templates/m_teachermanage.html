@@ -39,10 +39,7 @@
             <td th:text="${teacher.getPassword()}"></td>
             <td><a th:href="@{editteacher(id=${teacher.id})}">修改</a></td>
             <td>
-                <a type="button" class="close" href="private function del(s) {
-
-                }
-                javascript:del(&#39;1&#39;)">
+                <a type="button" class="close" th:href="@{deleteteacher(id=${teacher.id})}">
                     <span class="glyphicon glyphicon-trash"></span>
                     <span class="sr-only">关闭</span>
                 </a>

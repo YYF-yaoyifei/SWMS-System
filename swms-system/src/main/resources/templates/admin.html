@@ -14,7 +14,7 @@
 
 <script>
     $(function () {
-        $(".dropdown-menu a").on("click", function () {
+        $(".dropdown a").on("click", function () {
             var address = $(this).attr("data_src");
             $("iframe").attr("src", address);
         });
@@ -62,7 +62,7 @@
                                 班级管理<span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="" class="allS">总 览</a></li>
+                                <li><a data_src="m_studentmanage" class="allS">总 览</a></li>
                                 <li class="divider"></li>
                                 <li><a data_src="m_addstudent" class="addS">添 加</a></li>
                                 <li><a data_src="m_studentmanage" class="allS">删 除</a></li>
@@ -71,21 +71,15 @@
                         </li>
 
                         <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown"
-                                href="http://www.csbishe.cn:15083/ssh_hw_manage/login?account=admin&amp;password=admin&amp;type=Manager#"
-                                aria-expanded="false">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="" aria-expanded="false">
                                 课程管理<span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a data_src="m_add">
-                                        class="allC">总 览</a></li>
+                                <li><a data_src="m_coursemanage" class="allS">总 览</a></li>
                                 <li class="divider"></li>
-                                <li><a data_src="m_addcourse">
-                                        class="addC">添 加</a></li>
-                                <li><a data_src="m_coursemanage">
-                                        class="allC">删 除</a></li>
-                                <li><a data_src="m_coursemanage">
-                                        class="allC">修 改</a></li>
+                                <li><a data_src="m_addcourse" class="addS">添 加</a></li>
+                                <li><a data_src="m_coursemanage" class="allS">删 除</a></li>
+                                <li><a data_src="m_coursemanage" class="allS">修 改</a></li>
                             </ul>
                         </li>
 
@@ -133,7 +127,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <!-- <a href="#"><span class="glyphicon glyphicon-envelope" style="font-size: 20px;"></a> -->
-                        <img src="./管理员界面_files/header.gif" class="img-circle" style="width: 40px;height: 40px;">
+                        <img src="../img/header.jpg" class="img-circle" style="width: 40px;height: 40px;">
                     </li>
                     <li><strong><span style="line-height:55px;">管理员:&nbsp;admin</span></strong></li>
                     <li class="dropdown">

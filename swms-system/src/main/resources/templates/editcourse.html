@@ -2,7 +2,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>教师管理</title>
+	<title>课程修改</title>
 </head>
 <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -18,44 +18,27 @@
 	<div class="container">
 		<div class="row clearfix">
 			<div class="col-md-12 column">
-				<form class="form-horizontal" action="editandsaveteacher" method="get" role="form">
+				<form class="form-horizontal" action="editandsavecourse" method="get" role="form">
 					<div class="form-group">
-						<label for="inputid" class="col-sm-2 control-label">账号:</label>
+						<label for="inputid" class="col-sm-2 control-label">课程号:</label>
 						<div class="col-sm-2">
 							<input type="text" name = "id" class="form-control" id="inputid"
-								   th:value="${teacher.id}">
+								   th:value="${course.id}">
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label for="inputname" class="col-sm-2 control-label">姓名:</label>
+						<label for="inputname" class="col-sm-2 control-label">课程名:</label>
 						<div class="col-sm-2">
 							<input type="text" class="form-control" id="inputname" name = "name"
-								   th:value="${teacher.name}">
+								   th:value="${course.name}">
 						</div>
 					</div>
+
 					<div class="form-group">
-						<label class="col-sm-2 control-label">性别:</label>
+						 <label for="inputcredit" class="col-sm-2 control-label">学分:</label>
 						<div class="col-sm-2">
-							<input type="radio" name="sex" value="male" th:field = "*{teacher.gender}">
-							<label>男</label>&nbsp;
-							<input type="radio" name="sex" value="female" th:field = "*{teacher.gender}">
-							<label>女</label>
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="department" class="col-sm-2 control-label">学院:</label>
-						<div class="col-sm-2">
-							<select name="department" id="department" class="selectpicker form-control">
-								<option name="department" th:selected="${teacher.department.name eq department1.name }" th:each="department1: ${departments}" th:value="${department1.getId()}"
-										th:text="${department1.getName()}"></option>
-							</select>
-						</div>
-					</div>
-					<div class="form-group">
-						 <label for="inputpassword" class="col-sm-2 control-label">密码:</label>
-						<div class="col-sm-2">
-							<input type="text" class="form-control" id="inputpassword" name = "password" th:value = "${teacher.password}">
+							<input type="text" class="form-control" id="inputcredit" name = "credit" th:value = "${course.getCredit()}">
 						</div>
 					</div>
 					

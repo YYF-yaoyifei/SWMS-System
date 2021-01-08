@@ -25,8 +25,24 @@ public class Student {
     private String email;
 
     @Column
-    @Enumerated(EnumType.STRING)
-    Gender gender;
+    @Enumerated(EnumType.ORDINAL)
+    Gender gender = Gender.male;
+
+    @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.REFRESH},optional = false)
+    @JoinColumn(name = "department_id")
+    private Department department;
+
+    @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.REFRESH},optional = false)
+    @JoinColumn(name = "class_id")
+    private Classes classes;
+
+    public Classes getClasses() {
+        return classes;
+    }
+
+    public void setClasses(Classes classes) {
+        this.classes = classes;
+    }
 
     public int getId() {
         return id;
@@ -72,8 +88,24 @@ public class Student {
         return gender;
     }
 
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
     public void setGender(Gender gender) {
         this.gender = gender;
+    }
+
+    public boolean isMan(){
+        if(this.gender==Gender.male)
+            return true;
+        else if(this.gender==Gender.female)
+            return false;
+        return true;
     }
 }
 

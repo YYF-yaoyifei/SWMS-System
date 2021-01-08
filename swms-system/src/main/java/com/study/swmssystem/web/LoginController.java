@@ -1,11 +1,7 @@
 package com.study.swmssystem.web;
 
-import com.study.swmssystem.DAO.AdminDAO;
-import com.study.swmssystem.DAO.StudentDAO;
-import com.study.swmssystem.DAO.TeacherDAO;
-import com.study.swmssystem.pojo.Admin;
-import com.study.swmssystem.pojo.Student;
-import com.study.swmssystem.pojo.Teacher;
+import com.study.swmssystem.DAO.*;
+import com.study.swmssystem.pojo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -24,9 +21,13 @@ public class LoginController {
     StudentDAO studentDAO;
     @Autowired
     TeacherDAO teacherDAO;
+    @Autowired
+    DepartmentDAO departmentDAO;
+    @Autowired
+    ClassDAO classDAO;
 
 
-    @RequestMapping("/login")
+    @RequestMapping("/login_in")
     public String test(@RequestParam(value = "id")String id, @RequestParam(value = "password")String password , @RequestParam(value="type")String type) {
         if(type.equals("Manager")){
             Optional<Admin> optionalAdminDAO = adminDAO.findById(Integer.parseInt(id));
@@ -48,37 +49,31 @@ public class LoginController {
         return "errorPage";
     }
 
-    @RequestMapping("/admin")
+    @RequestMapping("/login")
     public String admin(Model m) throws Exception {
         m.addAttribute("now", DateFormat.getDateTimeInstance().format(new Date()));
 
         return "login";
     }
 
-    @RequestMapping("/m_studentmanage")
-    public String m_studentmangage(Model m) throws Exception {
-        m.addAttribute("now", DateFormat.getDateTimeInstance().format(new Date()));
-
-        return "m_studentmanage";
-    }
-
     @RequestMapping("/m_addstudent")
     public String m_addstudent(Model m) throws Exception{
+        List<Department> departmentList = departmentDAO.findAll();
+        m.addAttribute("departments",departmentList);
+        List<Classes> classesList = classDAO.findAll();
+        m.addAttribute("classes",classesList);
         return "m_addstudent";
     }
 
     @RequestMapping("/m_addteacher")
-        public String m_addteacher(Model m) throws Exception {
+    public String m_addteacher(Model m) throws Exception {
+        List<Department> departmentList = departmentDAO.findAll();
+        m.addAttribute("departments",departmentList);
         return "m_addteacher";
     }
 
     @RequestMapping("/m_addcourse")
     public String m_addcourse(Model m) throws Exception{
         return "m_addcourse";
-    }
-
-    @RequestMapping("/m_coursemanage")
-    public String m_coursemanage(Model m) throws Exception{
-        return "m_coursemanage";
     }
 }

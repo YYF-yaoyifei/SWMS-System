@@ -1,0 +1,158 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>学生管理</title>
+</head>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.bootcss.com/bootstrap-select/1.12.4/css/bootstrap-select.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap-select/1.12.4/js/i18n/defaults-zh_CN.min.js"></script>
+
+<style type="text/css">* {
+    text-shadow: transparent 0px 0px 0px, rgba(0, 0, 0, 0.68) 0px 0px 0px !important;
+}</style>
+</head>
+<body>
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+
+            <form class="form-horizontal" role="form"
+                  action="/editandsavestudent" method="get" name="studentForm">
+                <div class="form-group">
+                    <label for="inputid" class="col-sm-2 control-label">学号:</label>
+                    <div class="col-sm-2">
+                        <input type="text" name="id" class="form-control" id="inputid" th:value="${student.id}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputname" class="col-sm-2 control-label">姓名:</label>
+                    <div class="col-sm-2">
+                        <input type="text" name="name" class="form-control" id="inputname" th:value="${student.name}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">性别:</label>
+                    <div class="col-sm-2">
+                        <input type="radio" name="sex" value="male" th:field = "*{student.gender}">
+                        <label>男</label>&nbsp;
+                        <input type="radio" name="sex" value="female" th:field = "*{student.gender}">
+                        <label>女</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="class1" class="col-sm-2 control-label">班级:</label>
+                    <div class="col-sm-2">
+                        <select name="class1" id="class1" class="selectpicker form-control"
+                                >
+                            <option name="class1" th:selected="${student.classes.name eq oneclass.name}" th:each="oneclass: ${classes}" th:value="${oneclass.getId()}"
+                                    th:text="${oneclass.getName()}"></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputpassword" class="col-sm-2 control-label">密码:</label>
+                    <div class="col-sm-2">
+                        <input type="text" name="password" class="form-control" id="inputpassword"
+                               th:value="${student.password}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="department" class="col-sm-2 control-label">学院:</label>
+                    <div class="col-sm-2">
+                        <select name="department" id="department" class="selectpicker form-control">
+                            <option name="department" th:selected="${student.department.name eq department1.name }" th:each="department1: ${departments}" th:value="${department1.getId()}"
+                                    th:text="${department1.getName()}"></option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default">修改</button>&nbsp;&nbsp;&nbsp;
+                        <button type="reset" class="btn btn-default">重置</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript 放置在文档最后面可以使页面加载速度更快 -->
+<!-- 可选: 包含 jQuery 库 -->
+<script src="./教师管理-修改_files/jquery-3.1.1.js.下载"></script>
+<!-- 可选: 合并了 Bootstrap JavaScript 插件 -->
+<script src="./教师管理-修改_files/bootstrap.min.js.下载"></script>
+
+<remove-web-limits-iqxin id="rwl-iqxin" class="rwl-exempt" style="position: fixed; top: 0px; left: 0px;">
+    <qxinbutton type="qxinbutton" id="rwl-setbtn"> set</qxinbutton>
+    <lalala style="cursor:move; font-size:12px;">限制解除</lalala>
+    <input type="checkbox" name="" id="black_node">
+    <style type="text/css">#rwl-iqxin {
+        position: fixed;
+        transform: translate(-95px, 0);
+        width: 85px;
+        height: 25px;
+        font-size: 12px;
+        font-weight: 500;
+        font-family: Verdana, Arial, '宋体';
+        color: #fff;
+        background: #333;
+        z-index: 2147483647;
+        margin: 0;
+        opacity: 0.05;
+        transition: 0.3s;
+        overflow: hidden;
+        user-select: none;
+        text-align: center;
+        white-space: nowrap;
+        line-height: 25px;
+        padding: 0 16px;
+        border: 1px solid #ccc;
+        border-width: 1px 1px 1px 0;
+        border-bottom-right-radius: 5px;
+        box-sizing: content-box;
+    }
+
+    #rwl-iqxin input {
+        margin: 0;
+        padding: 0;
+        vertical-align: middle;
+        -webkit-appearance: checkbox;
+        -moz-appearance: checkbox;
+        position: static;
+        clip: auto;
+        opacity: 1;
+        cursor: pointer;
+    }
+
+    #rwl-iqxin.rwl-active-iqxin {
+        left: 0px;
+        transform: translate(0, 0);
+        opacity: 0.9;
+        height: 32px;
+        line-height: 32px
+    }
+
+    #rwl-iqxin label {
+        margin: 0;
+        padding: 0;
+        font-weight: 500;
+    }
+
+    #rwl-iqxin #rwl-setbtn {
+        margin: 0 4px 0 0;
+        padding: 0 0 0 4px;
+        border: none;
+        border-radius: 2px;
+        cursor: pointer;
+        background: #fff;
+        color: #000;
+    } </style>
+</remove-web-limits-iqxin>
+</body>
+</html>

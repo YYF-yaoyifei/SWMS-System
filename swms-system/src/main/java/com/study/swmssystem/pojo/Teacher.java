@@ -88,4 +88,11 @@ public class Teacher {
     public void setDepartment(Department department) {
         this.department = department;
     }
+
+    public boolean isMan(){
+        if(this.gender.getName().equals(("男")))
+            return true;
+        else
+            return false;
+    }
 }
