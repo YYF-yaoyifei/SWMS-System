@@ -61,6 +61,14 @@
                             </select>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="profession" class="col-sm-2 control-label">专业:</label>
+                        <div class="col-sm-2">
+                            <select name="profession" id="profession" class="selectpicker form-control" th:each="profession: ${professions}">
+                                <option name="profession" th:value="${profession.getId()}" th:text="${profession.getName()}"></option>
+                            </select>
+                        </div>
+                    </div>
 
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">

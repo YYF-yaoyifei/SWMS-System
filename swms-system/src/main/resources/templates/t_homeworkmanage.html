@@ -1,0 +1,144 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>管理员界面</title>
+</head>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.bootcss.com/bootstrap-select/1.12.4/css/bootstrap-select.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap-select/1.12.4/js/i18n/defaults-zh_CN.min.js"></script>
+
+<script type="text/javascript">
+    //删除作业
+    function del(id) {
+        $.get("/ssh_hw_manage/teacher/t_deletenotice?id=" + id, function (data) {
+            if ("success" == data.result) {
+                alert("删除成功!");
+                window.location.reload();
+            } else {
+                alert("删除失败!");
+            }
+        });
+    }
+</script>
+<title>教师作业总览</title>
+<!--教师的作业总览-->
+<style type="text/css">* {
+    text-shadow: transparent 0px 0px 0px, rgba(0, 0, 0, 0.68) 0px 0px 0px !important;
+}</style>
+</head>
+<remove-web-limits-iqxin id="rwl-iqxin" class="rwl-exempt" style="position: fixed; top: 0px; left: 0px;">
+    <qxinbutton type="qxinbutton" id="rwl-setbtn"> set</qxinbutton>
+    <lalala style="cursor:move; font-size:12px;">限制解除</lalala>
+    <input type="checkbox" name="" id="black_node">
+    <style type="text/css">#rwl-iqxin {
+        position: fixed;
+        transform: translate(-95px, 0);
+        width: 85px;
+        height: 25px;
+        font-size: 12px;
+        font-weight: 500;
+        font-family: Verdana, Arial, '宋体';
+        color: #fff;
+        background: #333;
+        z-index: 2147483647;
+        margin: 0;
+        opacity: 0.05;
+        transition: 0.3s;
+        overflow: hidden;
+        user-select: none;
+        text-align: center;
+        white-space: nowrap;
+        line-height: 25px;
+        padding: 0 16px;
+        border: 1px solid #ccc;
+        border-bottom-right-radius: 5px;
+        box-sizing: content-box;
+    }
+
+    #rwl-iqxin input {
+        margin: 0;
+        padding: 0;
+        vertical-align: middle;
+        -webkit-appearance: checkbox;
+        -moz-appearance: checkbox;
+        position: static;
+        clip: auto;
+        opacity: 1;
+        cursor: pointer;
+    }
+
+    #rwl-iqxin.rwl-active-iqxin {
+        left: 0;
+        transform: translate(0, 0);
+        opacity: 0.9;
+        height: 32px;
+        line-height: 32px
+    }
+
+    #rwl-iqxin label {
+        margin: 0;
+        padding: 0;
+        font-weight: 500;
+    }
+
+    #rwl-iqxin #rwl-setbtn {
+        margin: 0 4px 0 0;
+        padding: 0 0 0 4px;
+        border: none;
+        border-radius: 2px;
+        cursor: pointer;
+        background: #fff;
+        color: #000;
+    } </style>
+</remove-web-limits-iqxin>
+<body>
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span12" style=" ">
+            <table class="table table-hover table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>主题</th>
+                    <th>内容</th>
+                    <th>发布时间</th>
+                    <th>课程</th>
+                    <th>查看</th>
+                    <th style="width: 50px;">
+                        删除
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+
+
+                <tr th:each="homework: ${homeworks}">
+                    <td th:text ="${homework.id}"></td>
+                    <td th:text="${homework.getTheme()}"></td>
+                    <td th:text="${homework.getContent()}"></td>
+                    <td th:text="${homework.getEndtime().toString()}"></td>
+                    <td th:text="${homework.getCourse().name}"></td>
+                    <td><a th:href="@{edithomework(id=${homework.id})}">修改</a></td>
+                    <td>
+                        <a type="button" class="close" th:href="@{deletehomework(id=${homework.id})}">
+                            <span class="glyphicon glyphicon-trash"></span>
+                            <span class="sr-only">关闭</span>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

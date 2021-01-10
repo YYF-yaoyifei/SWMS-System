@@ -3,6 +3,7 @@ package com.study.swmssystem.pojo;
 import com.study.swmssystem.Enum.Gender;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "student")
@@ -35,6 +36,26 @@ public class Student {
     @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.REFRESH},optional = false)
     @JoinColumn(name = "class_id")
     private Classes classes;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "student_answer",joinColumns = {@JoinColumn(name = "student_id")},inverseJoinColumns = {@JoinColumn(name="answer_id")})
+    private List<Answer> answerList;
+
+    @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.REFRESH},optional = false)
+    @JoinColumn(name = "profession_id")
+    private Profession profession;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "student_course",joinColumns = {@JoinColumn(name = "student_id")},inverseJoinColumns = {@JoinColumn(name="course_id")})
+    private List<Course> courseList;
+
+    public List<Answer> getAnswerList() {
+        return answerList;
+    }
+
+    public void setAnswerList(List<Answer> answerList) {
+        this.answerList = answerList;
+    }
 
     public Classes getClasses() {
         return classes;
@@ -106,6 +127,22 @@ public class Student {
         else if(this.gender==Gender.female)
             return false;
         return true;
+    }
+
+    public Profession getProfession() {
+        return profession;
+    }
+
+    public void setProfession(Profession profession) {
+        this.profession = profession;
+    }
+
+    public List<Course> getCourseList() {
+        return courseList;
+    }
+
+    public void setCourseList(List<Course> courseList) {
+        this.courseList = courseList;
     }
 }
 

@@ -1,0 +1,170 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>管理员界面</title>
+</head>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.bootcss.com/bootstrap-select/1.12.4/css/bootstrap-select.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap-select/1.12.4/js/i18n/defaults-zh_CN.min.js"></script>
+
+<script th:inline="javascript" type="text/javascript">
+    $(document).ready(function () {
+        $("#course").change(function () {
+            const t = $("#course").val();
+            if (t == '') {
+                return;
+            }
+
+            $.post("/selecthomework?course=" + t, data => {
+                var t2;
+                t2 = $("#homework").empty();
+
+                for ( var i = 0; i < data.length; i++) {
+                    t2.append("<option value='"+data[i].id+"'>"+ data[i].name+"</option>");
+                }
+            });
+        })
+
+
+    })
+</script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        flag(0);
+    });
+
+    function flag(f) {
+        var flag = f;
+        if (flag == 1) {
+            alert("上传成功");
+        } else if (flag == 2) {
+            alert("上传失败！！！教师已批改，不可重复提交。");
+        } else if (flag == 3) {
+            alert("上传成功！已覆盖提交");
+        } else if (flag != 0) {
+            alert("上传失败");
+        }
+    }
+</script>
+
+<style type="text/css">* {
+    text-shadow: transparent 0px 0px 0px, rgba(0, 0, 0, 0.68) 0px 0px 0px !important;
+}</style>
+</head>
+<remove-web-limits-iqxin id="rwl-iqxin" class="rwl-exempt" style="position: fixed; top: 0px; left: 0px;">
+    <qxinbutton type="qxinbutton" id="rwl-setbtn"> set</qxinbutton>
+    <lalala style="cursor:move; font-size:12px;">限制解除</lalala>
+    <input type="checkbox" name="" id="black_node">
+    <style type="text/css">#rwl-iqxin {
+        position: fixed;
+        transform: translate(-95px, 0);
+        width: 85px;
+        height: 25px;
+        font-size: 12px;
+        font-weight: 500;
+        font-family: Verdana, Arial, '宋体';
+        color: #fff;
+        background: #333;
+        z-index: 2147483647;
+        margin: 0;
+        opacity: 0.05;
+        transition: 0.3s;
+        overflow: hidden;
+        user-select: none;
+        text-align: center;
+        white-space: nowrap;
+        line-height: 25px;
+        padding: 0 16px;
+        border: 1px solid #ccc;
+        border-width: 1px 1px 1px 0;
+        border-bottom-right-radius: 5px;
+        box-sizing: content-box;
+    }
+
+    #rwl-iqxin input {
+        margin: 0;
+        padding: 0;
+        vertical-align: middle;
+        -webkit-appearance: checkbox;
+        -moz-appearance: checkbox;
+        position: static;
+        clip: auto;
+        opacity: 1;
+        cursor: pointer;
+    }
+
+    #rwl-iqxin.rwl-active-iqxin {
+        left: 0px;
+        transform: translate(0, 0);
+        opacity: 0.9;
+        height: 32px;
+        line-height: 32px
+    }
+
+    #rwl-iqxin label {
+        margin: 0;
+        padding: 0;
+        font-weight: 500;
+    }
+
+    #rwl-iqxin #rwl-setbtn {
+        margin: 0 4px 0 0;
+        padding: 0 0 0 4px;
+        border: none;
+        border-radius: 2px;
+        cursor: pointer;
+        background: #fff;
+        color: #000;
+    } </style>
+</remove-web-limits-iqxin>
+<body>
+
+<!--整个页面栅格-->
+<div class="container-fluid " style="padding: 0px;margin-left: 4%;">
+    <div class="row-fluid">
+        <div class="span12">
+
+            <form action="submithomework" enctype="multipart/form-data">
+                <div class=" " style="margin-top: 2%;">
+                    <div class="input-group input-group-sm" style="width: 200px;">
+
+                        <span class="input-group-addon">课程：</span>
+                        <select name="course" id="course" class="selectpicker form-control">
+                            <option value="">-选择课程-</option>
+                            <option name="course" th:each="course:${courses}" th:value="${course.id}"
+                                    th:text="${course.getName()}"></option>
+                        </select>
+                    </div>
+                </div>
+                <div class=" " style="margin-top: 2%;">
+                    <div class="input-group input-group-sm" style="width: 200px;">
+
+                        <span class="input-group-addon">作业：</span>
+                        <select name="homework" id="homework" class="selectpicker form-control">
+                            <option value="">-选择作业-</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="" style="margin-top: 2%;">
+                    <label>填写答案：</label>
+                    <textarea name="answer" class="form-control" rows="10"></textarea>
+                </div>
+                <div class=" " style="margin-top: 2%;">
+                    <input type="submit" name="submit" class="btn-primary" id="submit" value="上传">
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

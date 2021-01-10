@@ -3,13 +3,14 @@ package com.study.swmssystem.web;
 import com.study.swmssystem.DAO.*;
 import com.study.swmssystem.Enum.Gender;
 import com.study.swmssystem.pojo.*;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,6 +30,12 @@ public class AdminController {
 
     @Autowired
     CourseDAO courseDAO;
+
+    @Autowired
+    AdminDAO adminDAO;
+
+    @Autowired
+    ProfessionDAO professionDAO;
 
     @RequestMapping("/m_teachermanage")
     public String teachermanage(Model m) {
@@ -51,13 +58,13 @@ public class AdminController {
     }
 
     @RequestMapping("/editandsaveteacher")
-    public String editandsaveteacher(Model m,@RequestParam(value = "id") String id, @RequestParam(value = "name") String name, @RequestParam(value = "password") String password, @RequestParam(value = "gender")String sex,@RequestParam(value = "department")String department) {
+    public String editandsaveteacher(Model m, @RequestParam(value = "id") String id, @RequestParam(value = "name") String name, @RequestParam(value = "password") String password, @RequestParam(value = "gender") String sex, @RequestParam(value = "department") String department) {
         Integer ID = Integer.parseInt(id);
         Optional<Teacher> exitteacher = teacherDAO.findById(ID);
         Teacher teacher = exitteacher.get();
         teacher.setName(name);
         teacher.setPassword(password);
-        if(sex.equals("female"))
+        if (sex.equals("female"))
             teacher.setGender(Gender.female);
         else
             teacher.setGender(Gender.male);
@@ -127,13 +134,13 @@ public class AdminController {
     }
 
     @RequestMapping("/editandsavestudent")
-    public String editandsavestudent(Model m, @RequestParam(value = "id") String id, @RequestParam(value = "name") String name, @RequestParam(value = "password") String password, @RequestParam(value = "gender")String sex, @RequestParam(value = "class1")String oneclass, @RequestParam(value = "department")String department) {
+    public String editandsavestudent(Model m, @RequestParam(value = "id") String id, @RequestParam(value = "name") String name, @RequestParam(value = "password") String password, @RequestParam(value = "gender") String sex, @RequestParam(value = "class1") String oneclass, @RequestParam(value = "department") String department) {
         Integer ID = Integer.parseInt(id);
         Optional<Student> exitstudent = studentDAO.findById(ID);
         Student student = exitstudent.get();
         student.setName(name);
         student.setPassword(password);
-        if(sex.equals("female"))
+        if (sex.equals("female"))
             student.setGender(Gender.female);
         else
             student.setGender(Gender.male);
@@ -161,7 +168,7 @@ public class AdminController {
     }
 
     @RequestMapping("/addstudent")
-    public String m_addstudent(Model m, @RequestParam(value = "id") String id, @RequestParam(value = "name") String name, @RequestParam(value = "password") String password, @RequestParam(value = "department") String departmentid, @RequestParam(value = "class1") String classid, @RequestParam(value = "sex") String sex) {
+    public String m_addstudent(Model m, @RequestParam(value = "id") String id, @RequestParam(value = "name") String name, @RequestParam(value = "password") String password, @RequestParam(value = "department") String departmentid, @RequestParam(value = "class1") String classid, @RequestParam(value = "sex") String sex, @RequestParam(value = "profession")String professionid) {
         Integer ID = Integer.parseInt(id);
         Student student = new Student();
         student.setId(ID);
@@ -173,6 +180,8 @@ public class AdminController {
             student.setGender(Gender.female);
         Department department = departmentDAO.getOne(Integer.parseInt(departmentid));
         student.setDepartment(department);
+        Profession profession1 = professionDAO.getOne(Integer.parseInt(professionid));
+        student.setProfession(profession1);
         Classes classes = classDAO.getOne(Integer.parseInt(classid));
         student.setClasses(classes);
         studentDAO.save(student);
@@ -230,7 +239,7 @@ public class AdminController {
     }
 
     @RequestMapping("/addcourse")
-    public String m_addcourse(Model m, @RequestParam(value = "id") String id, @RequestParam(value = "name") String name, @RequestParam(value = "credit") String credit){
+    public String m_addcourse(Model m, @RequestParam(value = "id") String id, @RequestParam(value = "name") String name, @RequestParam(value = "credit") String credit) {
         Integer ID = Integer.parseInt(id);
         Course course = new Course();
         course.setId(ID);
@@ -245,5 +254,63 @@ public class AdminController {
 
     }
 
+    @RequestMapping("/m_addstudent")
+    public String m_addstudent(Model m) throws Exception {
+        List<Department> departmentList = departmentDAO.findAll();
+        m.addAttribute("departments", departmentList);
+        List<Profession> professionList = professionDAO.findAll();
+        m.addAttribute("professions", professionList);
+        List<Classes> classesList = classDAO.findAll();
+        m.addAttribute("classes", classesList);
+        return "m_addstudent";
+    }
+
+    @RequestMapping("/m_addteacher")
+    public String m_addteacher(Model m) throws Exception {
+        List<Department> departmentList = departmentDAO.findAll();
+        m.addAttribute("departments", departmentList);
+        return "m_addteacher";
+    }
+
+    @RequestMapping("/m_addcourse")
+    public String m_addcourse(Model m) throws Exception {
+        return "m_addcourse";
+    }
+
+    @RequestMapping("/m_personalsetting")
+    public String m_personalsetting(Model m, HttpServletRequest request) throws Exception{
+        Admin admin;
+        String id = (String)request.getSession().getAttribute("id");
+        admin = adminDAO.getOne(Integer.parseInt(id));
+        m.addAttribute("admin", admin);
+        return "m_personalsetting";
+    }
+
+    @RequestMapping("/m_changeid")
+    public String m_changeid(Model m, HttpServletRequest request, @RequestParam(value = "account")String id) throws Exception{
+        String ID = (String)request.getSession().getAttribute("id");
+        Admin admin = adminDAO.getOne(Integer.parseInt(ID));
+        admin.setId(Integer.valueOf(id));
+        m.addAttribute("admin", admin);
+        return "m_personalsetting";
+    }
+
+    @RequestMapping("/m_changename")
+    public String m_changename(Model m, HttpServletRequest request, @RequestParam(value = "name")String name) throws Exception{
+        String ID = (String)request.getSession().getAttribute("id");
+        Admin admin = adminDAO.getOne(Integer.parseInt(ID));
+        admin.setName(name);
+        m.addAttribute("admin", admin);
+        return "m_personalsetting";
+    }
+
+    @RequestMapping("m_changepassword")
+    public String m_changepassword(Model m, HttpServletRequest request, @RequestParam(value = "password")String password) throws Exception{
+        String ID = (String)request.getSession().getAttribute("id");
+        Admin admin = adminDAO.getOne(Integer.parseInt(ID));
+        admin.setPassword(password);
+        m.addAttribute("admin", admin);
+        return "m_personalsetting";
+    }
 
 }

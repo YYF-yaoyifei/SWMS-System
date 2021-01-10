@@ -3,6 +3,7 @@ package com.study.swmssystem.pojo;
 import com.study.swmssystem.Enum.Gender;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "teacher")
@@ -32,6 +33,17 @@ public class Teacher {
     @Enumerated(EnumType.ORDINAL)
     Gender gender = Gender.male;
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "teacher_course",joinColumns = {@JoinColumn(name = "teacher_id")},inverseJoinColumns = {@JoinColumn(name="course_id")})
+    private List<Course> courseList;
+
+    public List<Course> getCourseList() {
+        return courseList;
+    }
+
+    public void setCourseList(List<Course> courseList) {
+        this.courseList = courseList;
+    }
 
     public Gender getGender() {
         return gender;

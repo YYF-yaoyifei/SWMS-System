@@ -1,0 +1,130 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>管理员界面</title>
+</head>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.bootcss.com/bootstrap-select/1.12.4/css/bootstrap-select.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap-select/1.12.4/js/i18n/defaults-zh_CN.min.js"></script>
+
+<style type="text/css">* {
+    text-shadow: transparent 0px 0px 0px, rgba(0, 0, 0, 0.68) 0px 0px 0px !important;
+}</style>
+</head>
+<remove-web-limits-iqxin id="rwl-iqxin" class="rwl-exempt" style="position: fixed; top: 0px; left: 0px;">
+    <qxinbutton type="qxinbutton" id="rwl-setbtn"> set</qxinbutton>
+    <lalala style="cursor:move; font-size:12px;">限制解除</lalala>
+    <input type="checkbox" name="" id="black_node">
+    <style type="text/css">#rwl-iqxin {
+        position: fixed;
+        transform: translate(-95px, 0);
+        width: 85px;
+        height: 25px;
+        font-size: 12px;
+        font-weight: 500;
+        font-family: Verdana, Arial, '宋体';
+        color: #fff;
+        background: #333;
+        z-index: 2147483647;
+        margin: 0;
+        opacity: 0.05;
+        transition: 0.3s;
+        overflow: hidden;
+        user-select: none;
+        text-align: center;
+        white-space: nowrap;
+        line-height: 25px;
+        padding: 0 16px;
+        border: 1px solid #ccc;
+        border-width: 1px 1px 1px 0;
+        border-bottom-right-radius: 5px;
+        box-sizing: content-box;
+    }
+
+    #rwl-iqxin input {
+        margin: 0;
+        padding: 0;
+        vertical-align: middle;
+        -webkit-appearance: checkbox;
+        -moz-appearance: checkbox;
+        position: static;
+        clip: auto;
+        opacity: 1;
+        cursor: pointer;
+    }
+
+    #rwl-iqxin.rwl-active-iqxin {
+        left: 0px;
+        transform: translate(0, 0);
+        opacity: 0.9;
+        height: 32px;
+        line-height: 32px
+    }
+
+    #rwl-iqxin label {
+        margin: 0;
+        padding: 0;
+        font-weight: 500;
+    }
+
+    #rwl-iqxin #rwl-setbtn {
+        margin: 0 4px 0 0;
+        padding: 0 0 0 4px;
+        border: none;
+        border-radius: 2px;
+        cursor: pointer;
+        background: #fff;
+        color: #000;
+    } </style>
+</remove-web-limits-iqxin>
+<body>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span12" style=" ">
+            <form action="editandsaveannounce" method="post">
+                <div class="text" style="float: left;margin-left: 10%;">
+                    <div class="input-group input-group-sm" style="width: 250px;">
+                        <span class="input-group-addon">主题</span>
+                        <input type="text" class="form-control" name="theme" th:value="${announcement.getTheme()}">
+                    </div>
+                    <br><br>
+                    <div class="input-group input-group-sm" style="width: 250px;">
+                        <span class="input-group-addon">课程</span>
+                            <select name="courseid" class="selectpicker form-control">
+                                <option name="courseid" th:selected="${announcement.course.name eq course.name }"
+                                        th:each="course: ${courses}" th:value="${course.getId()}"
+                                        th:text="${course.getName()}"></option>
+                            </select>
+                    </div>
+                    <br><br>
+
+                    <div style=" margin-left: 12%;">
+                        <input type="submit" class="btn btn-primary" name="发布">
+                        <input type="reset" class="btn btn-primary" name="重置" style="margin-left: 40px;">
+                    </div>
+                </div>
+                <div style="margin-left: 40%;">
+                    <textarea name="content" class="form-control textarea-sm" rows="12" cols="60" placeholder="内容" th:text="${announcement.getContent()}"
+                              style="resize: none;width: 500px;"></textarea>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- JavaScript 放置在文档最后面可以使页面加载速度更快 -->
+<!-- 可选: 包含 jQuery 库 -->
+<script src="./发布公告_files/jquery-3.1.1.js.下载"></script>
+<!-- 可选: 合并了 Bootstrap JavaScript 插件 -->
+<script src="./发布公告_files/bootstrap.min.js.下载"></script>
+
+</body>
+</html>

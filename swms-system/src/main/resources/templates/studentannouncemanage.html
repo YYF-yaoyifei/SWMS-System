@@ -1,0 +1,82 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>管理员界面</title>
+</head>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.bootcss.com/bootstrap-select/1.12.4/css/bootstrap-select.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap-select/1.12.4/js/i18n/defaults-zh_CN.min.js"></script>
+
+<body>
+<!--整个页面栅格-->
+<div class="row-fluid">
+    <div class="span12">
+        <!-- 作业列表 -->
+        <div th:each="announcement: ${announcements}">
+            <a id="modal-1" href="#modal-container-1" class="1" data-toggle="modal" style="clear:both;">
+                <ul class="thumbnails" style="list-style: none; margin-top: 20px; margin-left: 0; width: 1100px;">
+                    <li class="span4">
+                        <div class="thumbnail">
+                            <span class="glyphicon glyphicon-fire" style="font-size: 20px;"></span>
+
+                            <div class="caption">
+                                <h4 th:text="${announcement.getTheme()}"></h4>
+                                <p th:text="${announcement.getCourse().name}"></p>
+                                <p style="margin-left:93%;color:red;font-weight:bold;">
+                                    未提交
+                                </p>
+                                <div class="thumbs-up">
+                                    <span class="glyphicon glyphicon-thumbs-up" style="font-size: 20px;"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </a>
+            <div class="container-fluid">
+                <div class="modal fade" id="modal-container-1" role="dialog" aria-labelledby="myModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h4 class="modal-title">
+                                    作业内容
+                                </h4>
+                            </div>
+                            <form action="#" method="post">
+                                <div class="modal-body">
+                                    标题:&nbsp;<label>
+                                    <input type="text" name="title" th:value="${announcement.getTheme()}" readonly="readonly"
+                                           style="border:none;"/>
+                                </label> <br><br>
+                                    课程:&nbsp;<label>
+                                    <input type="text" name="deadline" th:value="${announcement.getCourse().name}" readonly="readonly"
+                                           style="border:none;"/>
+                                </label><br><br>
+                                    内容:&nbsp;<label>
+                                    <textarea name="content" readonly="readonly" style="display:inline-block;vertical-align:top;resize: none;" th:text = "${announcement.getContent()}"></textarea>
+                                </label><br><br>
+                                    截止日期:&nbsp;<label>
+                                    <input type="text" name="deadline" th:value="${announcement.getPublishtime().toString()}" readonly="readonly"
+                                           style="border:none;"/>
+                                </label><br><br>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

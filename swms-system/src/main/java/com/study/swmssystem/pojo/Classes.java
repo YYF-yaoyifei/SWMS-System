@@ -17,6 +17,10 @@ public class Classes {
     @OneToMany(mappedBy = "classes", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Student> studentList;
 
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, optional = false)
+    @JoinColumn(name = "profession_id")
+    private Profession profession;
+
     public int getId() {
         return id;
     }
@@ -39,5 +43,13 @@ public class Classes {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Profession getProfession() {
+        return profession;
+    }
+
+    public void setProfession(Profession profession) {
+        this.profession = profession;
     }
 }
