@@ -1,7 +1,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>班级管理</title>
+    <title>学生管理管理</title>
 </head>
 <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -11,48 +11,47 @@
 <script src="https://cdn.bootcss.com/bootstrap-select/1.12.4/js/i18n/defaults-zh_CN.min.js"></script>
 
 <body>
-    <div class="text-center">
-        <strong style="font-size:20px;">学生总览</strong>
-        <!-- <strong class="pull-right">总人数：xx</strong> -->
-    </div>
-    <table class="table table-hover table-bordered table-striped">
-        <thead>
-            <tr>
-                <th>序号</th>
-                <th>学号</th>
-                <th>姓名</th>
-                <th>性别</th>
-                <th>班级</th>
-                <th>密码</th>
-                <th>学院</th>
-                <th>修改</th>
-                <th style="width: 50px;">
-                    删除
-                </th>
-            </tr>
-        </thead>
-        <tbody>
+<div class="text-center">
+    <strong style="font-size:20px;">学生总览</strong>
+    <!-- <strong class="pull-right">总人数：xx</strong> -->
+</div>
+<table class="table table-hover table-bordered table-striped">
+    <thead>
+    <tr>
+        <th>序号</th>
+        <th>学号</th>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>班级</th>
+        <th>密码</th>
+        <th>学院</th>
+        <th>修改</th>
+        <th style="width: 50px;">
+            删除
+        </th>
+    </tr>
+    </thead>
+    <tbody>
 
 
+    <tr th:each="student: ${students}">
+        <td th:text="${index+1}"></td>
+        <td th:text="${student.getId()}"></td>
+        <td th:text="${student.getName()}"></td>
+        <td th:text="${student.gender.getName()}"></td>
+        <td th:text="${student.getClasses().getName()}"></td>
+        <td th:text="${student.getPassword()}"></td>
+        <td th:text="${student.getDepartment().getName()}"></td>
+        <td><a th:href="@{editstudent(id=${student.id})}">修改</a></td>
+        <td>
+            <a type="button" class="close" th:href="@{deletestudent(id=${student.id})}">
+                <span class="glyphicon glyphicon-trash"></span>
+                <span class="sr-only">关闭</span>
+            </a>
+        </td>
 
-        <tr th:each="student: ${students}">
-            <td th:text ="${index+1}"></td>
-            <td th:text="${student.getId()}"></td>
-            <td th:text="${student.getName()}"></td>
-            <td th:text="${student.gender.getName()}"></td>
-            <td th:text="${student.getClasses().getName()}"></td>
-            <td th:text="${student.getPassword()}"></td>
-            <td th:text="${student.getDepartment().getName()}"></td>
-            <td><a th:href="@{editstudent(id=${student.id})}">修改</a></td>
-            <td>
-                <a type="button" class="close" th:href="@{deletestudent(id=${student.id})}">
-                    <span class="glyphicon glyphicon-trash"></span>
-                    <span class="sr-only">关闭</span>
-                </a>
-            </td>
-
-        </tr>
-        </tbody>
-    </table>
+    </tr>
+    </tbody>
+</table>
 
 </body>

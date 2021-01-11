@@ -1,8 +1,8 @@
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <title>教师管理</title>
+    <title>教师发布作业</title>
 </head>
 <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -12,67 +12,71 @@
 <script src="https://cdn.bootcss.com/bootstrap-select/1.12.4/js/i18n/defaults-zh_CN.min.js"></script>
 
 <body>
-    <div class="container-fluid">
-        <div class="row-fluid">
-            <div class="span12" style=" ">
-                <form action="http://www.csbishe.cn:15083/ssh_hw_manage/teacher/t_publishWork" method="post">
-                    <div class="text" style="float: left;margin-left: 10%;">
-                        <div class="input-group input-group-sm" style="width: 250px;">
-                            <span class="input-group-addon">主题</span>
-                            <input type="text" class="form-control" name="w_title">
-                        </div><br><br>
-                        <div class="input-group input-group-sm" style="width: 250px;">
-                            <span class="input-group-addon">截止时间</span>
-                            <input type="date" class="form-control" name="w_deadline">
-                        </div><br><br>
-                        <div class="input-group input-group-sm" style="width: 250px;">
-                            <span class="input-group-addon">课程</span>
-                            <select class="form-control" name="w_course">
-
-
-                                <option>软件工程</option>
-
-                                <option>数据结构</option>
-
-                                <option>软件建模</option>
-
-                                <option>web网络编程</option>
-
-                                <option>操作系统</option>
-
-                                <option>Android</option>
-
-
-                            </select>
-                        </div><br><br>
-                        <div class="input-group input-group-sm" style="width: 250px;">
-                            <span class="input-group-addon">班级</span>
-                            <select class="form-control" name="w_c_id">
-
-
-                                <option>142011</option>
-
-                                <option>142012</option>
-
-                                <option>142013</option>
-
-
-                            </select>
-                        </div><br><br>
-                        <div style=" margin-left: 12%;">
-                            <input type="submit" class="btn btn-primary" name="发布">
-                            <input type="reset" class="btn btn-primary" name="重置" style="margin-left: 40px;">
-                        </div>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span12" style=" ">
+            <form action="http://www.csbishe.cn:15083/ssh_hw_manage/teacher/t_publishWork" method="post">
+                <div class="text" style="float: left;margin-left: 10%;">
+                    <div class="input-group input-group-sm" style="width: 250px;">
+                        <span class="input-group-addon">主题</span>
+                        <input type="text" class="form-control" name="w_title">
                     </div>
-                    <div style="margin-left: 40%;">
+                    <br><br>
+                    <div class="input-group input-group-sm" style="width: 250px;">
+                        <span class="input-group-addon">截止时间</span>
+                        <input type="date" class="form-control" name="w_deadline">
+                    </div>
+                    <br><br>
+                    <div class="input-group input-group-sm" style="width: 250px;">
+                        <span class="input-group-addon">课程</span>
+                        <select class="form-control" name="w_course">
+
+
+                            <option>软件工程</option>
+
+                            <option>数据结构</option>
+
+                            <option>软件建模</option>
+
+                            <option>web网络编程</option>
+
+                            <option>操作系统</option>
+
+                            <option>Android</option>
+
+
+                        </select>
+                    </div>
+                    <br><br>
+                    <div class="input-group input-group-sm" style="width: 250px;">
+                        <span class="input-group-addon">班级</span>
+                        <select class="form-control" name="w_c_id">
+
+
+                            <option>142011</option>
+
+                            <option>142012</option>
+
+                            <option>142013</option>
+
+
+                        </select>
+                    </div>
+                    <br><br>
+                    <div style=" margin-left: 12%;">
+                        <input type="submit" class="btn btn-primary" name="发布">
+                        <input type="reset" class="btn btn-primary" name="重置" style="margin-left: 40px;">
+                    </div>
+                </div>
+                <div style="margin-left: 40%;">
                         <textarea name="w_content" class="form-control textarea-sm" rows="12" cols="60" placeholder="内容"
-                            style="resize: none;width: 500px;"></textarea>
-                    </div>
+                                  style="resize: none;width: 500px;"></textarea>
+                </div>
 
 
-                </form>
-            </div>
+            </form>
         </div>
     </div>
+</div>
 
 </body>

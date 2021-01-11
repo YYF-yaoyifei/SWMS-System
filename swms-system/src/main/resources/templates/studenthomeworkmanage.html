@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>管理员界面</title>
+    <title>学生作业</title>
 </head>
 <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -30,10 +30,9 @@
                                     <h4 th:text="${homework.getTheme()}"></h4>
                                     <p th:text="${homework.getCourse().name}"></p>
                                     <p style="margin-left:93%;color:red;font-weight:bold;">
-                                        未提交
                                     </p>
                                     <div class="thumbs-up">
-										<span class="glyphicon glyphicon-thumbs-up" style="font-size: 20px;"></span>
+                                        <span class="glyphicon glyphicon-thumbs-up" style="font-size: 20px;"></span>
                                     </div>
                                 </div>
                             </div>
@@ -41,41 +40,47 @@
                     </ul>
                 </a>
                 <div class="container-fluid">
-                <div class="modal fade" id="modal-container-1" role="dialog" aria-labelledby="myModalLabel"
-                     aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                <h4 class="modal-title">
-                                    作业内容
-                                </h4>
+                    <div class="modal fade" id="modal-container-1" role="dialog" aria-labelledby="myModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                                    </button>
+                                    <h4 class="modal-title">
+                                        作业内容
+                                    </h4>
+                                </div>
+                                <form action="#" method="post">
+                                    <div class="modal-body">
+                                        标题:&nbsp;<label>
+                                        <input type="text" name="title" th:value="${homework.getTheme()}"
+                                               readonly="readonly"
+                                               style="border:none;"/>
+                                    </label> <br><br>
+                                        课程:&nbsp;<label>
+                                        <input type="text" name="deadline" th:value="${homework.getCourse().name}"
+                                               readonly="readonly"
+                                               style="border:none;"/>
+                                    </label><br><br>
+                                        内容:&nbsp;<label>
+                                        <textarea name="content" readonly="readonly"
+                                                  style="display:inline-block;vertical-align:top;resize: none;"
+                                                  th:text="${homework.getContent()}"></textarea>
+                                    </label><br><br>
+                                        截止日期:&nbsp;<label>
+                                        <input type="text" name="deadline"
+                                               th:value="${homework.getEndtime().toString()}" readonly="readonly"
+                                               style="border:none;"/>
+                                    </label><br><br>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                    </div>
+                                </form>
                             </div>
-                            <form action="#" method="post">
-                                <div class="modal-body">
-                                    标题:&nbsp;<label>
-                                    <input type="text" name="title" th:value="${homework.getTheme()}" readonly="readonly"
-                                           style="border:none;"/>
-                                </label> <br><br>
-                                    课程:&nbsp;<label>
-                                    <input type="text" name="deadline" th:value="${homework.getCourse().name}" readonly="readonly"
-                                           style="border:none;"/>
-                                </label><br><br>
-                                    内容:&nbsp;<label>
-                                    <textarea name="content" readonly="readonly" style="display:inline-block;vertical-align:top;resize: none;" th:text = "${homework.getContent()}"></textarea>
-                                </label><br><br>
-                                    截止日期:&nbsp;<label>
-                                    <input type="text" name="deadline" th:value="${homework.getEndtime().toString()}" readonly="readonly"
-                                           style="border:none;"/>
-                                </label><br><br>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                                </div>
-                            </form>
                         </div>
                     </div>
-                </div>
                 </div>
             </div>
         </div>

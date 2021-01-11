@@ -1,8 +1,9 @@
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<!DOCTYPE html>
 
 <head>
     <meta charset="UTF-8">
-    <title>老师界面</title>
+    <title>教师界面</title>
 </head>
 <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -86,9 +87,10 @@
             <ul class="nav navbar-nav navbar-right">
                 <li>
                     <!-- <a href="#"><span class="glyphicon glyphicon-envelope" style="font-size: 20px;"></a> -->
-                    <img src="./管理员界面_files/header.gif" class="img-circle" style="width: 40px;height: 40px;" alt="">
+                    <img src="../img/header.jpg" class="img-circle" style="width: 40px;height: 40px;" alt="">
                 </li>
-                <li><strong><span style="line-height:55px;">教师:&nbsp;admin</span></strong></li>
+                <li><strong><span style="line-height:55px;"
+                                  th:text="${'教师：'+teacher.getName()}">教师:&nbsp;admin</span></strong></li>
                 <li class="dropdown">
                     <a href="http://www.csbishe.cn:15083/ssh_hw_manage/login?account=admin&amp;password=admin&amp;type=Manager#"
                        class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">

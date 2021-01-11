@@ -1,7 +1,6 @@
 package com.study.swmssystem.web;
 
 import com.study.swmssystem.DAO.*;
-import com.study.swmssystem.Enum.Gender;
 import com.study.swmssystem.pojo.Admin;
 import com.study.swmssystem.pojo.Student;
 import com.study.swmssystem.pojo.Teacher;
@@ -30,9 +29,8 @@ public class LoginController {
     @Autowired
     ClassDAO classDAO;
 
-
     @RequestMapping("/login_in")
-    public String test(HttpServletRequest request, @RequestParam(value = "id") String id, @RequestParam(value = "password") String password, @RequestParam(value = "type") String type) {
+    public String test(Model m, HttpServletRequest request, @RequestParam(value = "id") String id, @RequestParam(value = "password") String password, @RequestParam(value = "type") String type) {
         HttpSession session = request.getSession();
         /*Admin admin = new Admin();
         admin.setId(123);
@@ -58,6 +56,7 @@ public class LoginController {
                 session.setAttribute("type", type);
                 session.setAttribute("id", id);
                 session.setAttribute("password", password);
+                m.addAttribute("admin", optionalAdminDAO.get());
                 return "admin";
             }
         } else if (type.equals("Student")) {
@@ -66,6 +65,7 @@ public class LoginController {
                 session.setAttribute("type", type);
                 session.setAttribute("id", id);
                 session.setAttribute("password", password);
+                m.addAttribute("student", optionalStudent.get());
                 return "student";
             }
 
@@ -75,11 +75,11 @@ public class LoginController {
                 session.setAttribute("type", type);
                 session.setAttribute("id", id);
                 session.setAttribute("password", password);
+                m.addAttribute("teacher", optionalTeacher.get());
                 return "teacher";
             }
 
         }
-
         return "errorPage";
     }
 

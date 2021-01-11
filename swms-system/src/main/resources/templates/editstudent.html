@@ -37,9 +37,9 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">性别:</label>
                     <div class="col-sm-2">
-                        <input type="radio" name="sex" value="male" th:field = "*{student.gender}">
+                        <input type="radio" name="sex" value="male" th:field="*{student.gender}">
                         <label>男</label>&nbsp;
-                        <input type="radio" name="sex" value="female" th:field = "*{student.gender}">
+                        <input type="radio" name="sex" value="female" th:field="*{student.gender}">
                         <label>女</label>
                     </div>
                 </div>
@@ -47,8 +47,9 @@
                     <label for="class1" class="col-sm-2 control-label">班级:</label>
                     <div class="col-sm-2">
                         <select name="class1" id="class1" class="selectpicker form-control"
-                                >
-                            <option name="class1" th:selected="${student.classes.name eq oneclass.name}" th:each="oneclass: ${classes}" th:value="${oneclass.getId()}"
+                        >
+                            <option name="class1" th:selected="${student.classes.name eq oneclass.name}"
+                                    th:each="oneclass: ${classes}" th:value="${oneclass.getId()}"
                                     th:text="${oneclass.getName()}"></option>
                         </select>
                     </div>
@@ -64,7 +65,8 @@
                     <label for="department" class="col-sm-2 control-label">学院:</label>
                     <div class="col-sm-2">
                         <select name="department" id="department" class="selectpicker form-control">
-                            <option name="department" th:selected="${student.department.name eq department1.name }" th:each="department1: ${departments}" th:value="${department1.getId()}"
+                            <option name="department" th:selected="${student.department.name eq department1.name }"
+                                    th:each="department1: ${departments}" th:value="${department1.getId()}"
                                     th:text="${department1.getName()}"></option>
                         </select>
                     </div>

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>管理员界面</title>
+    <title>提交作业</title>
 </head>
 <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -24,8 +24,8 @@
                 var t2;
                 t2 = $("#homework").empty();
 
-                for ( var i = 0; i < data.length; i++) {
-                    t2.append("<option value='"+data[i].id+"'>"+ data[i].name+"</option>");
+                for (var i = 0; i < data.length; i++) {
+                    t2.append("<option value='" + data[i].id + "'>" + data[i].name + "</option>");
                 }
             });
         })
@@ -135,23 +135,16 @@
                 <div class=" " style="margin-top: 2%;">
                     <div class="input-group input-group-sm" style="width: 200px;">
 
-                        <span class="input-group-addon">课程：</span>
-                        <select name="course" id="course" class="selectpicker form-control">
-                            <option value="">-选择课程-</option>
-                            <option name="course" th:each="course:${courses}" th:value="${course.id}"
-                                    th:text="${course.getName()}"></option>
-                        </select>
-                    </div>
-                </div>
-                <div class=" " style="margin-top: 2%;">
-                    <div class="input-group input-group-sm" style="width: 200px;">
-
                         <span class="input-group-addon">作业：</span>
-                        <select name="homework" id="homework" class="selectpicker form-control">
-                            <option value="">-选择作业-</option>
+                        <select name="homework" class="selectpicker" th:each="course:${courses}">
+                            <optgroup th:label="${course.name}">
+                                <option name="homework" th:each="homework:${course.getHomeworkList()}" th:value="${homework.id}" th:text="${homework.getName()}">1.1</option>
+                            </optgroup>
                         </select>
                     </div>
                 </div>
+
+
                 <div class="" style="margin-top: 2%;">
                     <label>填写答案：</label>
                     <textarea name="answer" class="form-control" rows="10"></textarea>

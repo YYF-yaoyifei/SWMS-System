@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>管理员界面</title>
+    <title>老师公告列表</title>
 </head>
 <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -119,7 +119,7 @@
 
 
                 <tr th:each="announcement: ${announcements}">
-                    <td th:text ="${announcement.id}"></td>
+                    <td th:text="${announcement.id}"></td>
                     <td th:text="${announcement.getTheme()}"></td>
                     <td th:text="${announcement.getContent()}"></td>
                     <td th:text="${announcement.getPublishtime().toString()}"></td>

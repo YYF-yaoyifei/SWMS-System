@@ -12,41 +12,41 @@
 <script src="https://cdn.bootcss.com/bootstrap-select/1.12.4/js/i18n/defaults-zh_CN.min.js"></script>
 
 <body>
-    <div class="text-center">
-        <strong style="font-size:20px;">教师总览</strong>
-    </div>
-    <table class="table table-hover table-bordered table-striped">
-        <thead>
-            <tr>
-                <th>序号</th>
-                <th>教师工号</th>
-                <th>姓名</th>
-                <th>性别</th>
-                <th>系部</th>
-                <th>密码</th>
-                <th>修改</th>
-                <th style="width: 50px;">删除</th>
-            </tr>
-        </thead>
-        <tbody>
+<div class="text-center">
+    <strong style="font-size:20px;">教师总览</strong>
+</div>
+<table class="table table-hover table-bordered table-striped">
+    <thead>
+    <tr>
+        <th>序号</th>
+        <th>教师工号</th>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>系部</th>
+        <th>密码</th>
+        <th>修改</th>
+        <th style="width: 50px;">删除</th>
+    </tr>
+    </thead>
+    <tbody>
 
-        <tr th:each="teacher: ${teachers}">
-            <td th:text ="${index+1}"></td>
-            <td th:text="${teacher.getId()}"></td>
-            <td th:text="${teacher.getName()}"></td>
-            <td th:text="${teacher.gender.getName()}"></td>
-            <td th:text="${teacher.getDepartment().getName()}"></td>
-            <td th:text="${teacher.getPassword()}"></td>
-            <td><a th:href="@{editteacher(id=${teacher.id})}">修改</a></td>
-            <td>
-                <a type="button" class="close" th:href="@{deleteteacher(id=${teacher.id})}">
-                    <span class="glyphicon glyphicon-trash"></span>
-                    <span class="sr-only">关闭</span>
-                </a>
-            </td>
+    <tr th:each="teacher: ${teachers}">
+        <td th:text="${index+1}"></td>
+        <td th:text="${teacher.getId()}"></td>
+        <td th:text="${teacher.getName()}"></td>
+        <td th:text="${teacher.gender.getName()}"></td>
+        <td th:text="${teacher.getDepartment().getName()}"></td>
+        <td th:text="${teacher.getPassword()}"></td>
+        <td><a th:href="@{editteacher(id=${teacher.id})}">修改</a></td>
+        <td>
+            <a type="button" class="close" th:href="@{deleteteacher(id=${teacher.id})}">
+                <span class="glyphicon glyphicon-trash"></span>
+                <span class="sr-only">关闭</span>
+            </a>
+        </td>
 
-        </tr>
-        </tbody>
-    </table>
+    </tr>
+    </tbody>
+</table>
 
 </body>

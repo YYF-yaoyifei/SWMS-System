@@ -25,7 +25,7 @@ public class Teacher {
     @Column(name = "email")
     private String email;
 
-    @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.REFRESH},optional = false)
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, optional = false)
     @JoinColumn(name = "department_id")
     private Department department;
 
@@ -34,7 +34,7 @@ public class Teacher {
     Gender gender = Gender.male;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "teacher_course",joinColumns = {@JoinColumn(name = "teacher_id")},inverseJoinColumns = {@JoinColumn(name="course_id")})
+    @JoinTable(name = "teacher_course", joinColumns = {@JoinColumn(name = "teacher_id")}, inverseJoinColumns = {@JoinColumn(name = "course_id")})
     private List<Course> courseList;
 
     public List<Course> getCourseList() {
@@ -101,8 +101,8 @@ public class Teacher {
         this.department = department;
     }
 
-    public boolean isMan(){
-        if(this.gender.getName().equals(("男")))
+    public boolean isMan() {
+        if (this.gender.getName().equals(("男")))
             return true;
         else
             return false;

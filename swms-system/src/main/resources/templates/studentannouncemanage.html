@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>管理员界面</title>
+    <title>学生公告</title>
 </head>
 <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -28,7 +28,6 @@
                                 <h4 th:text="${announcement.getTheme()}"></h4>
                                 <p th:text="${announcement.getCourse().name}"></p>
                                 <p style="margin-left:93%;color:red;font-weight:bold;">
-                                    未提交
                                 </p>
                                 <div class="thumbs-up">
                                     <span class="glyphicon glyphicon-thumbs-up" style="font-size: 20px;"></span>
@@ -52,18 +51,23 @@
                             <form action="#" method="post">
                                 <div class="modal-body">
                                     标题:&nbsp;<label>
-                                    <input type="text" name="title" th:value="${announcement.getTheme()}" readonly="readonly"
+                                    <input type="text" name="title" th:value="${announcement.getTheme()}"
+                                           readonly="readonly"
                                            style="border:none;"/>
                                 </label> <br><br>
                                     课程:&nbsp;<label>
-                                    <input type="text" name="deadline" th:value="${announcement.getCourse().name}" readonly="readonly"
+                                    <input type="text" name="deadline" th:value="${announcement.getCourse().name}"
+                                           readonly="readonly"
                                            style="border:none;"/>
                                 </label><br><br>
                                     内容:&nbsp;<label>
-                                    <textarea name="content" readonly="readonly" style="display:inline-block;vertical-align:top;resize: none;" th:text = "${announcement.getContent()}"></textarea>
+                                    <textarea name="content" readonly="readonly"
+                                              style="display:inline-block;vertical-align:top;resize: none;"
+                                              th:text="${announcement.getContent()}"></textarea>
                                 </label><br><br>
                                     截止日期:&nbsp;<label>
-                                    <input type="text" name="deadline" th:value="${announcement.getPublishtime().toString()}" readonly="readonly"
+                                    <input type="text" name="deadline"
+                                           th:value="${announcement.getPublishtime().toString()}" readonly="readonly"
                                            style="border:none;"/>
                                 </label><br><br>
                                 </div>

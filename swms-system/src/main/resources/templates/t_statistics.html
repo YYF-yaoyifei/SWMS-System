@@ -1,8 +1,8 @@
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <title>管理员界面</title>
+    <title>教师提交统计界面</title>
 </head>
 <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -12,47 +12,47 @@
 <script src="https://cdn.bootcss.com/bootstrap-select/1.12.4/js/i18n/defaults-zh_CN.min.js"></script>
 
 <body>
-    <div class="container" style="min-width: 100%;">
-        <div class="row-fluid">
-            <!--菜单项-->
-            <div class="col-md-2 column" style="background-color: #E0FFFF;height: 800px;padding: 0;">
+<div class="container" style="min-width: 100%;">
+    <div class="row-fluid">
+        <!--菜单项-->
+        <div class="col-md-2 column" style="background-color: #E0FFFF;height: 800px;padding: 0;">
 
-                <div class="row clearfix">
-                    <div class="col-md-12 column">
-                        <div class="panel-group" id="panel-614308">
-                            <div class="panel panel-default">
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <div class="panel-group" id="panel-614308">
+                        <div class="panel panel-default">
 
-                                <div class="panel-heading" style="height: 35px;">
-                                    <a class="panel-title" data-toggle="collapse" data-parent="#panel-614308"
-                                        href="http://www.csbishe.cn:15083/ssh_hw_manage/teacher/t_statistics?t_account=140001#142011">142011
-                                        <strong class="caret"></strong></a>
-                                </div>
-                                <div id="142011" class="panel-collapse collapse in" aria-expanded="false">
+                            <div class="panel-heading" style="height: 35px;">
+                                <a class="panel-title" data-toggle="collapse" data-parent="#panel-614308"
+                                   href="http://www.csbishe.cn:15083/ssh_hw_manage/teacher/t_statistics?t_account=140001#142011">142011
+                                    <strong class="caret"></strong></a>
+                            </div>
+                            <div id="142011" class="panel-collapse collapse in" aria-expanded="false">
 
-                                    <div class="panel-body">
-                                        <a href="javascript:void(0)" class="work " onclick="show(3,142011)">软件工程后作业</a>
-                                    </div>
-
-                                    <div class="panel-body">
-                                        <a href="javascript:void(0)" class="work "
-                                            onclick="show(7,142011)">关于JAVA变量的作业</a>
-                                    </div>
-
+                                <div class="panel-body">
+                                    <a href="javascript:void(0)" class="work " onclick="show(3,142011)">软件工程后作业</a>
                                 </div>
 
+                                <div class="panel-body">
+                                    <a href="javascript:void(0)" class="work "
+                                       onclick="show(7,142011)">关于JAVA变量的作业</a>
+                                </div>
 
                             </div>
+
+
                         </div>
                     </div>
                 </div>
+            </div>
 
-            </div>
-            <!--显示区-->
-            <div class="col-md-10 column" style="background-color: white;height: 1000px;">
-                <!--iframe标签-->
-                <iframe src="./教师提交统计_files/checkwork.html" frameborder="0" seamless="seamless" marginheight="0px"
-                    marginwidth="0px" width="100%" height="100%"></iframe>
-		</div>													<!-- scrolling=" no" -->
-            </div>
         </div>
+        <!--显示区-->
+        <div class="col-md-10 column" style="background-color: white;height: 1000px;">
+            <!--iframe标签-->
+            <iframe src="./教师提交统计_files/checkwork.html" frameborder="0" seamless="seamless" marginheight="0px"
+                    marginwidth="0px" width="100%" height="100%"></iframe>
+        </div>                                                    <!-- scrolling=" no" -->
+    </div>
+</div>
 </body>

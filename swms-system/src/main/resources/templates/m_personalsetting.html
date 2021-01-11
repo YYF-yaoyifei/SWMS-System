@@ -4,8 +4,8 @@
 <!DOCTYPE html>
 
 <head>
-	<meta charset="UTF-8">
-	<title>管理员界面</title>
+    <meta charset="UTF-8">
+    <title>管理员个人设置界面</title>
 </head>
 <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -15,63 +15,63 @@
 <script src="https://cdn.bootcss.com/bootstrap-select/1.12.4/js/i18n/defaults-zh_CN.min.js"></script>
 
 
-    <script type="text/javascript">
-        /* window.onload=function(){
-            function msg(){
-                var msg = "";
-                if( msg.length != 0 ){	//如果不等于空，说明返回来时出错
-                    alert("");
-                }
-            }
-        } */
-        /* window.onload = msg;
-        //若管理员信息修改有错-->则提示管理员信息修改出错
+<script type="text/javascript">
+    /* window.onload=function(){
         function msg(){
             var msg = "";
-            if(msg!=null){	//如果不等于空，说明返回来时出错
+            if( msg.length != 0 ){	//如果不等于空，说明返回来时出错
                 alert("");
             }
-        } */
-
-        $.validator.setDefaults({});
-        $().ready(function () {
-            // 在键盘按下并释放及提交后验证提交表单
-            $("#form3").validate({
-
-                rules: {
-                    psw: {
-                        required: true,
-                        minlength: 5
-                    },
-                    password: {
-                        required: true,
-                        minlength: 5,
-                        equalTo: "#psw"
-                    }
-
-                },
-                messages: {
-                    psw: {
-                        required: "请输入密码",
-                        minlength: "密码长度不能小于 5 个字母"
-                    },
-                    password: {
-                        required: "请输入密码",
-                        minlength: "密码长度不能小于 5 个字母",
-                        equalTo: "两次密码输入不一致"
-                    }
-                }
-            });
-        });
-    </script>
-    <style>
-        .error {
-            color: red;
         }
-    </style>
-    <style type="text/css">* {
-        text-shadow: transparent 0px 0px 0px, rgba(0, 0, 0, 0.68) 0px 0px 0px !important;
-    }</style>
+    } */
+    /* window.onload = msg;
+    //若管理员信息修改有错-->则提示管理员信息修改出错
+    function msg(){
+        var msg = "";
+        if(msg!=null){	//如果不等于空，说明返回来时出错
+            alert("");
+        }
+    } */
+
+    $.validator.setDefaults({});
+    $().ready(function () {
+        // 在键盘按下并释放及提交后验证提交表单
+        $("#form3").validate({
+
+            rules: {
+                psw: {
+                    required: true,
+                    minlength: 5
+                },
+                password: {
+                    required: true,
+                    minlength: 5,
+                    equalTo: "#psw"
+                }
+
+            },
+            messages: {
+                psw: {
+                    required: "请输入密码",
+                    minlength: "密码长度不能小于 5 个字母"
+                },
+                password: {
+                    required: "请输入密码",
+                    minlength: "密码长度不能小于 5 个字母",
+                    equalTo: "两次密码输入不一致"
+                }
+            }
+        });
+    });
+</script>
+<style>
+    .error {
+        color: red;
+    }
+</style>
+<style type="text/css">* {
+    text-shadow: transparent 0px 0px 0px, rgba(0, 0, 0, 0.68) 0px 0px 0px !important;
+}</style>
 </head>
 <remove-web-limits-iqxin id="rwl-iqxin" class="rwl-exempt" style="position: fixed; top: 0px; left: 0px;">
     <qxinbutton type="qxinbutton" id="rwl-setbtn"> set</qxinbutton>
@@ -193,7 +193,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                <h4 class="modal-title" >修改账号</h4>
+                                <h4 class="modal-title">修改账号</h4>
                             </div>
                             <form action="m_changeid"
                                   method="post">
@@ -219,13 +219,14 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                <h4 class="modal-title" >修改姓名</h4>
+                                <h4 class="modal-title">修改姓名</h4>
                             </div>
                             <form action="m_changename"
                                   method="post">
                                 <div class="modal-body">
                                     <input type="hidden" name="id" value="1">        <!--修改内容提示  -->
-                                    原名:<input type="text" name="oldname" th:value="${admin.name}" readonly="readonly" disabled="">
+                                    原名:<input type="text" name="oldname" th:value="${admin.name}" readonly="readonly"
+                                              disabled="">
                                     <br><br>
                                     新名:<input type="text" name="name">
                                 </div>

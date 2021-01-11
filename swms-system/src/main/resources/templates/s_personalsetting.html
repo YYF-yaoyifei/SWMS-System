@@ -1,8 +1,8 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<title>老师界面</title>
+    <meta charset="UTF-8">
+    <title>学生个人设置</title>
 </head>
 <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -12,89 +12,91 @@
 <script src="https://cdn.bootcss.com/bootstrap-select/1.12.4/js/i18n/defaults-zh_CN.min.js"></script>
 
 <style type="text/css">* {
- text-shadow: transparent 0px 0px 0px, rgba(0,0,0,0.68) 0px 0px 0px !important; 
-}</style></head>
+    text-shadow: transparent 0px 0px 0px, rgba(0, 0, 0, 0.68) 0px 0px 0px !important;
+}</style>
+</head>
 <body>
 <div class="container">
-	<div class="row clearfix">
-		<div class="col-md-12 column">
-			<table class="table">
-				<thead>
-				</thead>
-				<tbody>
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <table class="table">
+                <thead>
+                </thead>
+                <tbody>
 
-				<tr class="warning">
-					<td>
-						<a href="#modal-container-2" class="1" data-toggle="modal" style="clear:both;">修 改
-							密 码</a>
-					</td>
-				</tr>
-				<tr class="warning">
-					<td>
-						<a href="#modal-container-4" class="1" data-toggle="modal" style="clear:both;">修 改
-							密 码</a>
-					</td>
-				</tr>
-				</tbody>
-			</table>
-			<div class="container-fluid">
-				<!-- 修改姓名 -->
-				<div class="modal fade" id="modal-container-2" role="dialog" aria-labelledby="myModalLabel"
-					 aria-hidden="true">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-								<h4 class="modal-title">修改姓名</h4>
-							</div>
-							<form action="s_changename"
-								  method="post">
-								<div class="modal-body">
-									<input type="hidden" name="id" value="1">        <!--修改内容提示  -->
-									原名:<input type="text" name="oldname" th:value="${student.name}" readonly="readonly"
-											  disabled="">
-									<br><br>
-									新名:<input type="text" name="name">
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-									<button type="submit" class="btn btn-primary">修改</button>
-									<button type="reset" class="btn btn-primary">重置</button>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-				<!--修改密码-->
-				<div class="modal fade" id="modal-container-4" role="dialog" aria-labelledby="myModalLabel"
-					 aria-hidden="true">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-								<h4 class="modal-title" id="myModalLabel">
-									修改密码
-								</h4>
-							</div>
-							<form action="s_changepassword" method="post">
-								<div class="modal-body">
-									原&nbsp;&nbsp;密&nbsp;码:<input type="text" name="oldpaw"
-																 th:value="${student.password}" readonly=""> <br><br>
-									新&nbsp;&nbsp;密&nbsp;码:<input type="password" name="s_password"><br><br>
-									确定密码:<input type="password" name="password">
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-									<button type="submit" class="btn btn-primary">修改</button>
-									<button type="reset" id="reset" class="btn btn-primary">重置</button>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                <tr class="warning">
+                    <td>
+                        <a href="#modal-container-2" class="1" data-toggle="modal" style="clear:both;">修 改
+                            密 码</a>
+                    </td>
+                </tr>
+                <tr class="warning">
+                    <td>
+                        <a href="#modal-container-4" class="1" data-toggle="modal" style="clear:both;">修 改
+                            密 码</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="container-fluid">
+                <!-- 修改姓名 -->
+                <div class="modal fade" id="modal-container-2" role="dialog" aria-labelledby="myModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h4 class="modal-title">修改姓名</h4>
+                            </div>
+                            <form action="s_changename"
+                                  method="post">
+                                <div class="modal-body">
+                                    <input type="hidden" name="id" value="1">        <!--修改内容提示  -->
+                                    原名:<input type="text" name="oldname" th:value="${student.name}" readonly="readonly"
+                                              disabled="">
+                                    <br><br>
+                                    新名:<input type="text" name="name">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                    <button type="submit" class="btn btn-primary">修改</button>
+                                    <button type="reset" class="btn btn-primary">重置</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!--修改密码-->
+                <div class="modal fade" id="modal-container-4" role="dialog" aria-labelledby="myModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h4 class="modal-title" id="myModalLabel">
+                                    修改密码
+                                </h4>
+                            </div>
+                            <form action="s_changepassword" method="post">
+                                <div class="modal-body">
+                                    原&nbsp;&nbsp;密&nbsp;码:<input type="text" name="oldpaw"
+                                                                 th:value="${student.password}" readonly=""> <br><br>
+                                    新&nbsp;&nbsp;密&nbsp;码:<input type="password" name="s_password"><br><br>
+                                    确定密码:<input type="password" name="password">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                    <button type="submit" class="btn btn-primary">修改</button>
+                                    <button type="reset" id="reset" class="btn btn-primary">重置</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-</body></html>
+</body>
+</html>

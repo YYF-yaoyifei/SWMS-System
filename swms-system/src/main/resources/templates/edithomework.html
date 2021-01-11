@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>管理员界面</title>
+    <title>修改作业</title>
 </head>
 <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -95,11 +95,11 @@
                     <br><br>
                     <div class="input-group input-group-sm" style="width: 250px;">
                         <span class="input-group-addon">课程</span>
-                            <select name="courseid" class="selectpicker form-control">
-                                <option name="courseid" th:selected="${homework.course.name eq course.name }"
-                                        th:each="course: ${courses}" th:value="${course.getId()}"
-                                        th:text="${course.getName()}"></option>
-                            </select>
+                        <select name="courseid" class="selectpicker form-control">
+                            <option name="courseid" th:selected="${homework.course.name eq course.name }"
+                                    th:each="course: ${courses}" th:value="${course.getId()}"
+                                    th:text="${course.getName()}"></option>
+                        </select>
                     </div>
                     <br><br>
 
@@ -109,7 +109,8 @@
                     </div>
                 </div>
                 <div style="margin-left: 40%;">
-                    <textarea name="content" class="form-control textarea-sm" rows="12" cols="60" placeholder="内容" th:text="${homework.getContent()}"
+                    <textarea name="content" class="form-control textarea-sm" rows="12" cols="60" placeholder="内容"
+                              th:text="${homework.getContent()}"
                               style="resize: none;width: 500px;"></textarea>
                 </div>
 

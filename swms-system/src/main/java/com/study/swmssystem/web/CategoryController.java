@@ -11,20 +11,16 @@ import java.util.List;
 
 @Controller
 public class CategoryController {
-	@Autowired
+    @Autowired
     CategoryDAO categoryDAO;
-	
+
     @RequestMapping("/listCategory")
     public String listCategory(Model m) throws Exception {
-    	List<Category> cs=categoryDAO.findAll();
-    	
-    	
-    	m.addAttribute("cs", cs);
+        List<Category> cs = categoryDAO.findAll();
+
+        m.addAttribute("cs", cs);
 
         return "listCategory";
     }
-    
 
-    
-    
 }
